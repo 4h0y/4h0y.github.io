@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Плееры фильмов для киносайтов</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/icons/manifest.json">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <meta name="apple-mobile-web-app-title" content="Yohoho">
+    <meta name="application-name" content="Yohoho">
+    <meta name="theme-color" content="#2a3440">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <style>
+        .index,.contact,.webmaster,body{background:#2A3440;font-family:Neucha,sans-serif;color:#fff;margin:50px auto 60px;font-size:14px}.index,.play{overflow:hidden}.online{overflow-x:hidden}.play,.play iframe,.play .col-xs-12{width:100%}.play,.play iframe,.play .col-xs-12,.online,.online iframe,.online .col-xs-12,.online .col-sm-6,.online .col-lg-4,.torrent{margin:0;padding:0;border:0}a{text-decoration:none;outline:none}a .disabled{pointer-events:none;cursor:default}.navbar{z-index:3;border:0}.navbar-inverse{background:#27313e}.navbar-inverse .navbar-brand{font-weight:700;text-shadow:1px 1px 2px #000,0 0 1em #5bb8cc;font-size:20px}.navbar-inverse .navbar-brand:first-letter{text-transform:uppercase}.navbar-inverse .navbar-toggle:focus,.navbar-inverse .navbar-toggle:hover{background-color:#232c36}.footer{z-index:3;position:absolute;bottom:0;width:100%;height:50px;background-color:#27313e}.container .text-muted{margin:15px 0}.container .text-muted span{color:#ccc}.index-background{position:absolute;z-index:2;top:0;left:0;width:100%;height:100%;background:#2A3440;opacity:.6}.index-seo{color:#999;text-align:justify}.tag{color:#719f4a}.attr-name{color:#4F9FCF}.attr-value{color:#D44950}.comment{color:#999}.code{font-family:monospace,sans-serif;padding:20px;margin:20px auto;border:2px #2E3A47 solid;background:#000;border-radius:5px;position:inherit}.example{position:absolute;right:4px;bottom:2px;cursor:pointer;color:#ccc}.preview{position:fixed;top:0;right:0;width:50%;height:370px;margin:70px 15px 0 0}.preview iframe{position:absolute;right:0;bottom:0;width:100%;height:370px;border:2px #2E3A47 solid;border-radius:5px}.search-line{z-index:3;position:absolute!important;left:50%;top:40%;margin-left:-325px!important;margin-top:-100px!important;width:650px}.search-line .brand{color:#fff;font-size:70px;font-weight:700;margin:0 auto;text-align:center;text-shadow:1px 1px 2px #000,0 0 1em #5bb8cc}.search-line .brand:first-letter{text-transform:uppercase}.search-line .form{margin:20px auto;width:100%;text-align:center}.search-line .form input,.moderator input,.moderator textarea,.movie-soc textarea{color:#fff;background:#27313e;border:2px #2f3a46 solid;border-radius:5px;padding:15px;margin:30px auto 0;font-size:16px}.search-line input:hover,.moderator input:hover,.moderator textarea:hover,.movie-soc textarea:hover{border:2px #27313e solid;background:#2f3a46}a{color:#fff}a:hover{color:#fff;text-decoration:none;outline:none}a:focus{color:#ccc;text-decoration:none;outline:none}.player .buttons{position:absolute;bottom:0;left:0;margin:0 8px 8px;z-index:1;opacity:.6}.player .buttons:hover{opacity:.9}.player .title{margin:7px 10px 0}.player .translate,.player .seasons{margin:0 10px}.btn{border-radius:0!important;background:rgba(0,0,0,0.4)!important;padding:6px 0!important;overflow:hidden}.btn-group-justified .btn-group{padding:2px!important}.table > tbody > tr > td,.table > tbody > tr > th,.table > tfoot > tr > td,.table > tfoot > tr > th,.table > thead > tr > td,.table > thead > tr > th{border-top:0!important}.table > thead > tr > th{border-bottom:none}.table-hover > tbody > tr:hover{background-color:#27313e}.table-striped > tbody > tr:nth-of-type(2n+1){background-color:#2f3a46}.td-btn:hover{color:#999;cursor:pointer}.text-muted{color:#999}.table{margin:0}
+    </style>
+
+</head>
+<body class="webmaster">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Навигация</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yohoho</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="https://github.com/4h0y/4h0y.github.io" target="_blank">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://bitbucket.org/4h0y/4h0y.bitbucket.io" target="_blank">Bitbucket</a>
+                </li>
+                <li>
+                    <a href="https://gitlab.com/4h0y/4h0y.gitlab.io" target="_blank">GitLab</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/webmaster.html">Вебмастеру</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="code">
+                <span class="comment">
+                    &lt;!-- Вставляете в место, где должен быть плеер --&gt;
+                </span>
+                <br>
+                <span class="tag">&lt;div</span>
+                <span> </span>
+                <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Дэдпул</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <br>
+                <span class="tag">&lt;script</span>
+                <span> </span>
+                <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                <div class="example" onclick="return yohoho({title:'Дэдпул / Deadpool (2016)'});">Показать</div>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    &lt;!-- Можно искать онлайн фильмы по ID КиноПоиск --&gt;
+                </span>
+                <br>
+                <span class="tag">&lt;div</span>
+                <span> </span>
+                <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-kinopoisk=&quot;</span><span class="attr-value">401522</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <br>
+                <span class="tag">&lt;script</span>
+                <span> </span>
+                <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                <div class="example" onclick="return yohoho({kinopoisk:'401522'});">Показать</div>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    &lt;!-- Вставляете в место, где должен быть трейлер --&gt;
+                </span>
+                <br>
+                <span class="tag">&lt;div</span>
+                <span> </span>
+                <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">trailer</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Моана</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <br>
+                <span class="tag">&lt;script</span>
+                <span> </span>
+                <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                <div class="example" onclick="return yohoho({title:'Моана',player:'trailer'});">Показать</div>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    &lt;!-- Вставляете в место, где должны быть торренты --&gt;
+                </span>
+                <br>
+                <span class="tag">&lt;div</span>
+                <span> </span>
+                <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">torrent</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Инферно</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <br>
+                <span class="tag">&lt;script</span>
+                <span> </span>
+                <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                <div class="example" onclick="return yohoho({title:'Инферно',player:'torrent'});">Показать</div>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Параметр <span class="attr-name">data-title</span> (поиск торрентов, трейлера и плееров)
+                </span>
+                <br>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Дэдпул</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - русское название</span>
+                <br>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Дэдпул (2016)</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - русское название и год</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">Дэдпул / Deadpool (2016)</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - идеальное название</span>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Параметр <span class="attr-name">data-kinopoisk</span> (поиск плееров)
+                </span>
+                <br>
+                <span class="attr-name">data-kinopoisk=&quot;</span><span class="attr-value">775276</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - ID КиноПоиск</span>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Параметр <span class="attr-name">data-player</span>
+                </span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">moonwalk</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер moonwalk.cc</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">hdgo</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер hdgo.cc</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">iframe</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер iframe.video</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">kodik</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер kodik.cc</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">allserials</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер allserials.tv</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">trailer</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - трейлер с YouTube</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">torrent</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - список торрентов</span>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">moonwalk,hdgo,iframe</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - можно указывать несколько источников, через запятую</span>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Использование собственных токенов
+                </span>
+                <br>
+                <span class="attr-name">data-moonwalk=&quot;</span><span class="attr-value">94a08da1fecbb6e8b46</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - Ваш токен moonwalk.cc</span>
+                <br>
+                <span class="attr-name">data-hdgo=&quot;</span><span class="attr-value">94a08da1fecbb6e8b46</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - Ваш токен hdgo.cc</span>
+                <br>
+                <span class="attr-name">data-youtube=&quot;</span><span class="attr-value">94a08da1fecbb6e8b46</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - Ваш токен YouTube API</span>
+                <br>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Использование moonlight.cx
+                </span>
+                <br>
+                <span class="attr-name">data-moonlight=&quot;</span><span class="attr-value">ВАШ-ДОМЕН.com/moonlight</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - ссылка на папку moonlight</span>
+            </div>
+            <div class="text-muted text-justify">
+                <h1>
+                    <a href="#pleery_filmov_online" id="pleery_filmov_online" style="color: #fff">
+                        Плееры фильмов онлайн для сайта о кино
+                    </a>
+                </h1>
+                Решили <strong>создать онлайн кинотеатр</strong>, но не знаете <strong>где брать фильмы онлайн?</strong>
+                <br>
+                Ответ: yohoho.cc
+                <br><br>
+                Yohoho - это сайт-агрегатор всех открытых и закрытых видео-хостингов на наличие фильмов онлайн. Вы можете подключить сервис Yohoho во все фильмы на сайте (если сайт уже готов и содержит фильмы) или можете встроить коды выше в шаблон сайта и начать добавлять только информацию о фильме в любой CMS, в которой Вы работаете. Yohoho автоматически отследит о каком фильме идет речь на странице и покажет все плееры из разных источников, которые есть в базе. Помимо этого, Вам не нужно следить за выходом нового качества, доверьте это Yohoho. Как только выйдет на одном из видео-хостингов лучшее качество фильма, Yohoho автоматически добавит его на Ваш сайт.
+                <h2>
+                    <a href="#pleery_dlya_DLE" id="pleery_dlya_DLE" style="color: #fff">
+                        Как поставить онлайн фильмы на DLE
+                    </a>
+                </h2>
+                Для того, чтобы поставить плееры на сайт, нужно отредактировать шаблон. Для этого переходим в папку с Вашим шаблоном и ищем файл «fullstory.tpl», он отвечает за отображение полной новости сайта. Открываем файл любым тектовым редактором, к примеру notepad и добавляем следующий код в место, где бы Вы хотели видеть плееры:
+                <div class="code">
+                    <span class="tag">&lt;div</span>
+                    <span> </span>
+                    <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                    <span> </span>
+                    <span class="attr-name">data-title=&quot;</span><span class="attr-value">{title}</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <br>
+                    <span class="tag">&lt;script</span>
+                    <span> </span>
+                    <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                </div>
+                Код <u>{title}</u> отвечает за отображение названия страницы с фильмов. Важно чтобы название было в таком формате: Русское название / Английское название (год) или Русское название / Английское название или Русское название (год), таким образом можно максимально точно определить, о каком фильме идет речь.
+                <h2>
+                    <a href="#pleery_dlya_Ucoz" id="pleery_dlya_Ucoz" style="color: #fff">
+                        Как поставить онлайн фильмы на Ucoz
+                    </a>
+                </h2>
+                Чтобы добавить во на все страницы сайта плееры фильмов, требуется зайти в админ-панель сайта на Ucoz. Перейти в раздел «Дизайн» > «Управление дизайном (шаблоны)». Затем откройте шаблон модуля в который Вы добавляете фильмы, это может быть «Новости сайта» > «Страница материала и комментариев к нему», «Блог» > «Страница материала и комментариев к нему», «Каталог статей» > «Страница материала и комментариев к нему» или «Каталог файлов» > «Страница материала и комментариев к нему». Открыв нужный шаблон, вставьте этот код в место, где хотите видеть плееры:
+                <div class="code">
+                    <span class="tag">&lt;div</span>
+                    <span> </span>
+                    <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                    <span> </span>
+                    <span class="attr-name">data-title=&quot;</span><span class="attr-value">$ENTRY_TITLE$</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <br>
+                    <span class="tag">&lt;script</span>
+                    <span> </span>
+                    <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                </div>
+                <h2>
+                    <a href="#pleery_dlya_WordPress" id="pleery_dlya_WordPress" style="color: #fff">
+                        Как поставить онлайн фильмы на WordPress
+                    </a>
+                </h2>
+                Плееры, которые есть в базе Yohoho на WordPress будут отображаться в шаблоне «single.php». Откройте этот файл с помощью любого тектового редактора и вставьте код в то место, где по Вашему плееры будут смотреться максимально практично и удобно:
+                <div class="code">
+                    <span class="tag">&lt;div</span>
+                    <span> </span>
+                    <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                    <span> </span>
+                    <span class="attr-name">data-title=&quot;</span><span class="attr-value">&lt;?php single_post_title(); ?&gt;</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <br>
+                    <span class="tag">&lt;script</span>
+                    <span> </span>
+                    <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+        </div>
+    </div>
+</div>
+
+<div class="preview">
+    <div id="yohoho" data-title="Дэдпул / Deadpool (2016)"></div>
+</div>
+
+<script src="yo.js"></script>
+
+<script>
+    function yohoho(data) {
+        for (var key in document.querySelector('#yohoho').dataset) {
+            if (document.querySelector('#yohoho').dataset.hasOwnProperty(key)) {
+                document.querySelector('#yohoho').dataset[key] = '';
+            }
+        }
+        for (var key2 in data) {
+            if (data.hasOwnProperty(key2)) {
+                document.querySelector('#yohoho').dataset[key2] = data[key2];
+            }
+        }
+        console.log(document.querySelector('#yohoho').dataset);
+        return yo();
+    }
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+        google: {
+            families: ['Neucha']
+        }
+    });
+</script>
+
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42913814 = new Ya.Metrika({ id:42913814, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42913814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+</body>
+</html>

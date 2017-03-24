@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Yohoho - плееры и торренты для киносайта онлайн кинотеатра</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/icons/manifest.json">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <meta name="apple-mobile-web-app-title" content="Yohoho">
+    <meta name="application-name" content="Yohoho">
+    <meta name="theme-color" content="#2a3440">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <style>
+        .index,.contact,.webmaster,body{background:#2A3440;font-family:Neucha,sans-serif;color:#fff;margin:50px auto 60px;font-size:14px}.index,.play{overflow:hidden}.online{overflow-x:hidden}.play,.play iframe,.play .col-xs-12{width:100%}.play,.play iframe,.play .col-xs-12,.online,.online iframe,.online .col-xs-12,.online .col-sm-6,.online .col-lg-4,.torrent{margin:0;padding:0;border:0}a{text-decoration:none;outline:none}a .disabled{pointer-events:none;cursor:default}.navbar{z-index:3;border:0}.navbar-inverse{background:#27313e}.navbar-inverse .navbar-brand{font-weight:700;text-shadow:1px 1px 2px #000,0 0 1em #5bb8cc;font-size:20px}.navbar-inverse .navbar-brand:first-letter{text-transform:uppercase}.navbar-inverse .navbar-toggle:focus,.navbar-inverse .navbar-toggle:hover{background-color:#232c36}.footer{z-index:3;position:absolute;bottom:0;width:100%;height:50px;background-color:#27313e}.container .text-muted{margin:15px 0}.container .text-muted span{color:#ccc}.index-background{position:absolute;z-index:2;top:0;left:0;width:100%;height:100%;background:#2A3440;opacity:.6}.index-seo{color:#999;text-align:justify}.search-line{z-index:3;position:absolute!important;left:50%;top:40%;margin-left:-325px!important;margin-top:-100px!important;width:650px}.search-line .brand{color:#fff;font-size:70px;font-weight:700;margin:0 auto;text-align:center;text-shadow:1px 1px 2px #000,0 0 1em #5bb8cc}.search-line .brand:first-letter{text-transform:uppercase}.search-line .form{margin:20px auto;width:100%;text-align:center}.search-line .form input,.moderator input,.moderator textarea,.movie-soc textarea{color:#fff;background:#27313e;border:2px #2f3a46 solid;border-radius:5px;padding:15px;margin:30px auto 0;font-size:16px}.search-line input:hover,.moderator input:hover,.moderator textarea:hover,.movie-soc textarea:hover{border:2px #27313e solid;background:#2f3a46}a{color:#fff}a:hover{color:#fff;text-decoration:none;outline:none}a:focus{color:#ccc;text-decoration:none;outline:none}.player .buttons{position:absolute;bottom:0;left:0;margin:0 8px 8px;z-index:1;opacity:.6}.player .buttons:hover{opacity:.9}.player .title{margin:7px 10px 0}.player .translate,.player .seasons{margin:0 10px}.btn{border-radius:0!important;background:rgba(0,0,0,0.4)!important;padding:6px 0!important;overflow:hidden}.btn-group-justified .btn-group{padding:2px!important}
+    </style>
+
+</head>
+<body class="index">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Навигация</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yohoho</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="https://github.com/4h0y/4h0y.github.io" target="_blank">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://bitbucket.org/4h0y/4h0y.bitbucket.io" target="_blank">Bitbucket</a>
+                </li>
+                <li>
+                    <a href="https://gitlab.com/4h0y/4h0y.gitlab.io" target="_blank">GitLab</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/webmaster.html">Вебмастеру</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="index-background"></div>
+
+<div>
+    <div class="search-line" id="yohoho">
+        <div class="brand">Yohoho</div>
+        <div class="form">
+            <input type="text" placeholder="Название фильма" id="search-title" name="title" style="width: 250px">
+            <input type="button" id="search" value="Найти">
+        </div>
+    </div>
+</div>
+
+<script src="yo.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var search = document.querySelector('#search');
+        if (search) {
+            search.addEventListener('click', function () {
+                var title = document.querySelector('#search-title');
+                if (title && title.value) {
+                    var yohoho = document.querySelector('#yohoho');
+                    yohoho.dataset.title = title.value;
+                    return yo();
+                }
+            });
+            var title = document.querySelector('#search-title');
+            title.addEventListener('keyup', function (event) {
+                event.preventDefault();
+                if (event.keyCode == 13 && title && title.value) {
+                    var yohoho = document.querySelector('#yohoho');
+                    yohoho.dataset.title = title.value;
+                    return yo();
+                }
+            });
+        }
+    });
+</script>
+
+<div class="index-seo">
+    Yohoho - это сайт-агрегатор всех открытых и закрытых видео-хостингов и торрент-трекеров рунета на наличие новых фильмов и сериалов. Каждый начинающий вебмастер при создании онлайн кинотеатра задается вполне обоснованным вопросом, «<h1 style="font-size: 14px; font-weight: normal; margin: 0; padding: 0;">Где брать онлайн фильмы для сайта?</h1>». На этот и многие другие вопросы, сможет ответить сервис Yohoho, так как у Нас собраны плееры со всех видео-хостингов рунета и если фильмы нет у Нас, значит по сути его нет в интернете. Помимо онлайн фильмов, Вы также можете встроить в шаблон Вашего сайта трейлер любого фильма в мире. В Нашей базе находятся все трейлеры фильмов и сериалов, которые загружены на YouTube. Иногда бывают случае, что вместо трейлера на YouTube можно посмотреть сразу весь фильм, ввиду того, что трейлера просто не существует. Для молодого сайта, вебмастеру нужно постараться, чтобы понравиться пользователю. Благодаря сервису Yohoho ему это сделать будет очень и очень легко. Если ни на одном видео-хостинге нет онлайн фильма, то у Ваших пользователей будет возможность поискать фильм на торрент-трекерах. Это всё делается также автоматически, Вам нужно всего вставить комбинированный код Yohoho в шаблон сайта. Давайте продолжим перечислять все преимущества сервиса Yohoho по сравнению со вставкой плеера от видео-хостингов напрямую. Каждый раз, когда фильм в плеере будет блокироваться или перестанет работать, в случае вставки плеера напрямую, Вам нужно будет каждый раз редактировать материал. Те же самые действия Вам нужно будет совершать и при появлении нового, более лучшего, качества фильма или сериала. Однако о всех этих проблемах можно забыть, если Вы пользуетесь плеерами от Yohoho. Мы автоматически отслеживаем неработающие фильмы, отслеживаем появление нового качества и сразу добавляем их в базу. Таким образом один раз добавив сервис Yohoho в шаблон Вашего сайта, Вам не нужно беспокоиться, что фильм не работает или имеет худшее на данный момент качество. Теперь давайте отойдет от темы вебмастеров и представим, что Вы обычный зритель, который хочет <strong style="font-size: 14px; font-weight: normal; margin: 0; padding: 0;">посмотреть онлайн фильм или сериал</strong> сейчас на сайте. Для этого Вы можете ввести название фильма в поисковую строку и получить список всех фильмов, которые есть на данный момент в базе в режиме онлайн или в формате torrent. Если хотите увидеть все новинки онлайн кино, которые добавляются каждую минуту, то можете зайти в раздел «Онлайн» и увидите ничего, кроме плееров, чтобы не загромождать страницу лишней информацией. Если у Вас нет времени на просмотр фильма в онлайне, то можете зайти в раздел «Скачать» и увидеть список всех торрентов, которые добавляются также как и онлайн каждую минуту. Все фильмы в разделе «Скачать» представлены в виде magnet-ссылок, которые обрабатываются всеми современными торрент-клиентами, такими как BitTorrent, uTorrent и др. Поэтому нажав на скачать любой фильм, автоматически откроется установленный на Вашем компьютере торрент-клиент и начнется загрузка. По окончании загрузки, рекомендуется не удалять торрент несколько дней, чтобы другие пользователи могли его скачивать. Таким образом Вы поддержите культурную ценность кинематографа, ведь некоторые фильмы раздаются уже десяток лет и раздающих становится на них всё меньше и меньше и когда уйдет последний, фильм нельзя будет скачать. Теперь давайте поговорим о еще одной интересной функции Yohoho, а именно установки поиска в поисковую строку браузера. Это позволит Вам смотреть или скачать фильмы без утомительных поисков в Яндексе или Google, без посещения десятков киносайтов и открывании тонны рекламы на каждом. Всё что Вам нужно будет, это ввести в адресной строке такой запрос «смотреть [название фильма]» или «скачать [название фильма]». Согласитесь это удобно, один запрос и сразу плеер или несколько плееров фильма. Мы не вставляем свою рекламу в плееры, Мы всё делаем на чистом энтузиазме, однако некоторые видео-хостинги могут вставлять свою назойливую рекламу, поэтому Мы сразу извиняемся за это, но это именно то, благодаря чему Вы смотрите фильмы бесплатно. Помимо рекламы в плеерах, некоторые фильмы озвучиваются студиями и им также нужно как-то зарабатывать. Поэтому они вставляют рекламу различных казино и букмекерских кантор напрямую в фильм. От этого также никуда не деться, такова плата за «бесплатный сыр», пусть он и не находится в мышеловке. Движемся дальше и теперь поговорим о владельцах исключительных прав на воспроизведение и распространение видео-продукции. Все плееры и торренты, это сторонние источники, к которым Yohoho не имеет отношения. При обнаружении на странице фильма Вашей продукции, пожалуйста обращайтесь в контакты этих видео-хостингов, для удаления или блокировки возможности смотреть или скачивать фильм. Если первоисточник будет заблокирован, то на Yohoho Ваш фильм не будет распространяться нелегально. Напоследок еще раз похвалим Yohoho. Многотысячная аудитория пользователей Yohoho, ценит в нём именно то огромное число фильмов, которым оперирует база, быстрым обновлением и добавлением новых. Новинки кино появляются практически моментально, как только та или иная студия выкладывает фильм на торрент-трекеры. Наш робот моментально мотается каждую минуту по всех источникам в поисках новых сериалов, передач, мультфильмов, аниме и наконец художественных или документальных фильмов. Всё это стало возможным, благодаря Вашим пожеланиям и требованиям. Нет предела совершенству, поэтому если Вы имеете определенные предложения по улучшению сервиса, Мы с радостью их выслушаем, просто напишите нам на email указанный в контактах. Yohoho был есть и остается бесплатным сервисом и лучшая благодарность, которую Вы как пользователи могли бы дать, это посещения Нашего сайта каждый день, голосование за фильмы и репосты в социальные сети. Именно репосты помогают сервису развиваться и наращивать базу фильмов онлайн и торрентов, так как видим в ней потребность со стороны Вас. Вскоре Нас ждет много интересного, чего еще не делал ни один сервис в рунете. Мы сделаем приложение <strong style="font-size: 14px; font-weight: normal; margin: 0; padding: 0;">«Фильмы онлайн» для мобильных телефонов Android и iPhone</strong>, чтобы Вы могли смотреть фильмы с экрана Вашего мобильного устройства, сделаем расширение для браузера, благодаря которому можно будет смотреть фильмы с любого информационного кино-сайта путем встраивания плеера напрямую в страницу сайта, сделаем бота для Telegram, который будет Вас оповещать о том, что нового вышло на торрентах или онлайн, а также много чего другого. Ахой, Йохохо!
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Онлайн и торренты <span id="count">335 201</span> фильмов и сериалов.</p>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+        google: {
+            families: ['Neucha']
+        }
+    });
+</script>
+<script>
+    (function flashWord() {
+        var seo = document.querySelector('.index-seo').innerText;
+        var items = seo.split(' ');
+        var i = 0;
+
+        function run(item) {
+            setTimeout(function () {
+                document.querySelector('.index-seo').innerHTML = seo.replace(new RegExp(' ' + item + ' ', 'g'), ' <span style="color: #fff">' + item + '</span> ');
+                i = getRandom(0, items.length - 1);
+                run(items[i].replace(/[^A-Za-zА-Яа-яёЁ0-9]/gim, ''));
+            }, 100);
+        }
+
+        function getRandom(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        run(items[i]);
+    })();
+
+    (function countMovies() {
+        var date = new Date();
+        var year = date.getUTCFullYear();
+        var month = date.getUTCMonth()+1;
+        var day = date.getUTCDate();
+        var hours = date.getUTCHours();
+        var minutes = date.getUTCMinutes();
+        var seconds = date.getUTCSeconds();
+        var total = ((year-2014)*121680) + (month*10140) + (day * 338) + (hours * 14) + minutes + seconds;
+        document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})/, '$1 $2');
+        setInterval(function() {
+            total += Math.floor(Math.random() * 3);
+            document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})/, '$1 $2');
+        },1000);
+    })();
+</script>
+
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42913814 = new Ya.Metrika({ id:42913814, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42913814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+</body>
+</html>
