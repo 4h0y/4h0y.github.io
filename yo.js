@@ -115,7 +115,7 @@ function yo() {
                 var key = keys[i].toLowerCase().trim();
                 if (players.hasOwnProperty(key) && players[key]) {
                     var option = document.createElement('div');
-                    option.setAttribute('onclick', 'show("' + players[key] + '", this)');
+                    option.setAttribute('onclick', 'showPlayer("' + players[key] + '", this)');
                     option.dataset.iframe = players[key];
                     if (key == 'trailer') {
                         j++;
@@ -130,7 +130,7 @@ function yo() {
                         option.innerText = j + '► ' + key.toUpperCase();
                     }
                     if (first) {
-                        show(players[key], option, buttons);
+                        showPlayer(players[key], option, buttons);
                         first = false;
                     }
                     buttons.appendChild(option);
@@ -147,7 +147,7 @@ function yo() {
 
 }
 
-function show(iframe, element, buttons) {
+function showPlayer(iframe, element, buttons) {
     var yohohoLoading = document.querySelector('#yohoho-loading');
     yohohoLoading.style.display = 'block';
     setTimeout(function () {
