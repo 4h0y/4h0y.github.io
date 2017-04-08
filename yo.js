@@ -49,7 +49,6 @@ function yo() {
 
     if (window.top.location.protocol == 'https:') {
         options.player = options.player
-            .replace('moonwalk', '')
             .replace('kodik', '')
             .replace('allserials', '')
     }
