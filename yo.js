@@ -49,7 +49,6 @@ function yo() {
 
     if (window.top.location.protocol == 'https:') {
         options.player = options.player
-            .replace('kodik', '')
             .replace('allserials', '')
     }
 
@@ -153,6 +152,7 @@ function showPlayer(iframe, element, buttons) {
         yohohoLoading.style.display = 'none';
     },2000);
     var yohohoIframe = document.querySelector('#yohoho-iframe');
+    yohohoIframe.style.display = 'block';
     yohohoIframe.setAttribute('src', iframe);
     if (typeof element.setAttribute === 'function') {
         var yohohoActive = document.querySelectorAll('.yohoho-active');
