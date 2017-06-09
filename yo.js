@@ -154,6 +154,7 @@ function showPlayer(iframe, element, buttons) {
     var yohohoIframe = document.querySelector('#yohoho-iframe');
     yohohoIframe.style.display = 'block';
     yohohoIframe.setAttribute('src', iframe);
+    yohohoIframe.setAttribute('class', '');
     if (typeof element.setAttribute === 'function') {
         var yohohoActive = document.querySelectorAll('.yohoho-active');
         if (yohohoActive) {
