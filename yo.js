@@ -28,7 +28,7 @@ function yo() {
     options.player = (options.title.indexOf('трейлер')+1 || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,kodik,iframe,allserials,trailer,torrent'
+            ? 'moonwalk,hdgo,kodik,allserials,iframe,trailer,torrent'
             : options.player;
 
     options.bg = (!options.bg)
