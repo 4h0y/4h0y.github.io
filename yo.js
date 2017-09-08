@@ -40,7 +40,7 @@ function yo() {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
             if (btn.length === 2 && btn[0] && btn[1]) {
-                btns[btn[0].toLowerCase()] = btn[1].trim();
+                btns[btn[0].trim().toLowerCase()] = btn[1].trim();
             }
         });
     }
