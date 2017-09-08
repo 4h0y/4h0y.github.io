@@ -35,12 +35,12 @@ function yo() {
         ? options.bg.replace(/[^0-9a-z]/ig, '')
         : '2A3440';
 
-    var buttons = {};
+    var btns = {};
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
             if (btn.length === 2 && btn[0] && btn[1]) {
-                buttons[btn[0].toLowerCase()] = btn[1].trim();
+                btns[btn[0].toLowerCase()] = btn[1].trim();
             }
         });
     }
@@ -123,9 +123,9 @@ function yo() {
                     var option = document.createElement('div');
                     option.setAttribute('onclick', 'showPlayer("' + players[key] + '", this)');
                     option.dataset.iframe = players[key];
-                    if (buttons.hasOwnProperty(key) && buttons[key]) {
+                    if (btns.hasOwnProperty(key) && btns[key]) {
                         j++;
-                        option.innerText = j + '►' + buttons[key];
+                        option.innerText = j + '►' + btns[key];
                     }
                     else if (key === 'trailer') {
                         j++;
