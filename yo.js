@@ -35,8 +35,8 @@ function yo() {
         ? options.bg.replace(/[^0-9a-z]/ig, '')
         : '2A3440';
 
+    var buttons = {};
     if (options.button) {
-        var buttons = {};
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
             if (btn.length === 2 && btn[0] && btn[1]) {
