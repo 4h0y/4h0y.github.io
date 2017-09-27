@@ -120,6 +120,9 @@ function yo() {
             for (var i = 0, len = keys.length; i < len; i++) {
                 var key = keys[i].toLowerCase().trim();
                 if (players.hasOwnProperty(key) && players[key]) {
+                    players[key] = (key === 'moonwalk' && options.start_time)
+                        ? players[key] + '?start_time=' + options.start_time
+                        : players[key];
                     var option = document.createElement('div');
                     option.setAttribute('onclick', 'showPlayer("' + players[key] + '", this)');
                     option.dataset.iframe = players[key];
