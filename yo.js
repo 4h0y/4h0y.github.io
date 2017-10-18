@@ -185,7 +185,7 @@ function yo(sel) {
                 yohohoLoading.style.display = 'none';
             }
             else if (j > 1) {
-                document.querySelector('#yohoho').appendChild(buttons);
+                yohoho.appendChild(buttons);
             }
         });
 
