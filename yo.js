@@ -19,9 +19,15 @@ function ahoy_yo() {
 function yo(sel) {
     var h, w, i, l, s, t = false, p = '';
 
-    console.log('#' + ((sel) ? sel : 'yohoho'));
+    var yohoho_loading = document.querySelector('#yohoho-loading');
+    if (yohoho_loading) {
+        yohoho_loading.parentNode.removeChild(yohoho_loading);
+    }
+    var yohoho_iframe = document.querySelector('#yohoho-iframe');
+    if (yohoho_iframe) {
+        yohoho_iframe.parentNode.removeChild(yohoho_iframe);
+    }
     var yohoho = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
-    console.log(yohoho);
     if (!yohoho) {
         yohoho = document.querySelector('#yohoho-online');
         if (!yohoho) {
