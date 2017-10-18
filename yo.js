@@ -4,8 +4,8 @@ function ahoy_yo() {
     var a = document.querySelectorAll('[data-ahoy]');
     if (a && a.length) {
         for (var i in a) {
-            if (a.hasOwnProperty(i) && a) {
-                a.addEventListener('click', function() {
+            if (a.hasOwnProperty(i) && a[i]) {
+                a[i].addEventListener('click', function() {
                     yo(this.getAttribute('data-ahoy'));
                 });
             }
