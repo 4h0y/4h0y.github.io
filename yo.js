@@ -45,7 +45,7 @@ function yo(sel) {
         return /^data-/.test(a.name) && (o[a.name.substr(5)] = a.value), o;
     }, {});
 
-    if (options.title.indexOf('трейлер')+1 || t) {
+    if (options.title && options.title.indexOf('трейлер')+1 || t) {
         options.player = 'trailer';
     }
 
