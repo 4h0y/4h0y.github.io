@@ -20,6 +20,7 @@ function yo(sel) {
     var h, w, i, l, s, t = false, p = '';
 
     var yohoho = document.querySelector('#' + (sel) ? sel : 'yohoho');
+    console.log((sel) ? sel : 'yohoho', yohoho);
     if (!yohoho) {
         yohoho = document.querySelector('#yohoho-online');
         if (!yohoho) {
