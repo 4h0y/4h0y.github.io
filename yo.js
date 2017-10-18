@@ -49,7 +49,7 @@ function yo(sel) {
         options.player = 'trailer';
     }
 
-    options.player = (options.title.indexOf('трейлер')+1 || t)
+    options.player = (options.title && options.title.indexOf('трейлер')+1 || t)
         ? 'trailer'
         : (!options.player)
             ? 'moonwalk,hdgo,kodik,allserials,iframe,trailer,torrent'
