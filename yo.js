@@ -19,14 +19,6 @@ function ahoy_yo() {
 function yo(sel) {
     var h, w, i, l, s, t = false, p = '';
 
-    var yohoho_loading = document.querySelector('#yohoho-loading');
-    if (yohoho_loading) {
-        yohoho_loading.parentNode.removeChild(yohoho_loading);
-    }
-    var yohoho_iframe = document.querySelector('#yohoho-iframe');
-    if (yohoho_iframe) {
-        yohoho_iframe.parentNode.removeChild(yohoho_iframe);
-    }
     var yohoho = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
     if (!yohoho) {
         yohoho = document.querySelector('#yohoho-online');
@@ -82,6 +74,19 @@ function yo(sel) {
 
     if (!options.kinopoisk && !options.title) {
         return false;
+    }
+
+    var yohoho_loading = document.querySelector('#yohoho-loading');
+    if (yohoho_loading) {
+        yohoho_loading.parentNode.removeChild(yohoho_loading);
+    }
+    var yohoho_buttons = document.querySelector('#yohoho-buttons');
+    if (yohoho_buttons) {
+        yohoho_buttons.parentNode.removeChild(yohoho_buttons);
+    }
+    var yohoho_iframe = document.querySelector('#yohoho-iframe');
+    if (yohoho_iframe) {
+        yohoho_iframe.parentNode.removeChild(yohoho_iframe);
     }
 
     var head = document.head || document.getElementsByTagName('head')[0];
