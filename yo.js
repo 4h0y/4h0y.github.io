@@ -91,7 +91,7 @@ function yo(sel) {
     var data_ahoy = document.querySelectorAll('[data-ahoy]');
     for (var da in data_ahoy) {
         if (data_ahoy.hasOwnProperty(da) && data_ahoy[da]) {
-            var yohoho_da = document.querySelector('#' + data_ahoy);
+            var yohoho_da = document.querySelector('#' + data_ahoy[da].getAttribute('data-ahoy'));
             if (yohoho_da) {
                 yohoho_da.removeAttribute('style');
             }
