@@ -77,7 +77,7 @@
                 <span class="tag">&lt;script</span>
                 <span> </span>
                 <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
-                <div class="example" onclick="return yohoho({title:'Дэдпул / Deadpool (2016)'});">Показать</div>
+                <div class="example" data-ahoy="yohoho">Показать</div>
             </div>
             <div class="code">
                 <span class="comment">
@@ -93,7 +93,7 @@
                 <span class="tag">&lt;script</span>
                 <span> </span>
                 <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
-                <div class="example" onclick="return yohoho({kinopoisk:'401522'});">Показать</div>
+                <div class="example" data-ahoy="yohoho-kinopoisk">Показать</div>
             </div>
             <div class="code">
                 <span class="comment">
@@ -111,7 +111,7 @@
                 <span class="tag">&lt;script</span>
                 <span> </span>
                 <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
-                <div class="example" onclick="return yohoho({title:'Моана',player:'trailer'});">Показать</div>
+                <div class="example" data-ahoy="yohoho-trailer">Показать</div>
             </div>
             <div class="code">
                 <span class="comment">
@@ -129,7 +129,7 @@
                 <span class="tag">&lt;script</span>
                 <span> </span>
                 <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
-                <div class="example" onclick="return yohoho({title:'Инферно',player:'torrent'});">Показать</div>
+                <div class="example" data-ahoy="yohoho-torrent">Показать</div>
             </div>
             <div class="code">
                 <span class="comment">
@@ -292,6 +292,29 @@
                     <span> </span>
                     <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
                 </div>
+                <h2>
+                    <a href="#pleer_ne_na_glavnom_ekrane" id="pleer_ne_na_glavnom_ekrane" style="color: #fff">
+                        Как вставить плеер на сайт после клика по кнопке?
+                    </a>
+                </h2>
+                Если планируется вставка плеера не сразу (основным), а через клик по кнопке (Плеер 2, Плеер 3 и т.п.), то на кнопке должно быть событие <span class="attr-name">data-ahoy=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>. Учтите, это довольно важный параметр, так как если плеер загружается на фоне впустую, Вы расходуете не только русурсы Yohoho, но так же и ресурсы своих пользователей. Сайты, которые будут создавать таким образом фоновую нагрузку будут блокироваться, до тех пор, пока не поставят Yohoho на главный экран (основным) или до того, пока не поставят событие <span class="attr-name">data-ahoy=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span> на кнопку.
+                <div class="code">
+                    <span class="tag">&lt;a</span>
+                    <span> </span>
+                    <span class="attr-name">href=&quot;</span><span class="attr-value">javascript:void(0)</span><span class="attr-name">&quot;</span>
+                    <span> </span>
+                    <span class="attr-name">data-ahoy=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span><span class="tag">&gt;<span class="attr-value">Плеер 2</span>&lt;/a&gt;</span>
+                    <br>
+                    <span class="tag">&lt;div</span>
+                    <span> </span>
+                    <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                    <span> </span>
+                    <span class="attr-name">data-title=&quot;</span><span class="attr-value">Дэдпул</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                    <br>
+                    <span class="tag">&lt;script</span>
+                    <span> </span>
+                    <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                </div>
             </div>
         </div>
         <div class="col-xs-6">
@@ -301,26 +324,13 @@
 
 <div class="preview">
     <div id="yohoho" data-title="Дэдпул / Deadpool (2016)"></div>
+    <div id="yohoho-kinopoisk" data-kinopoisk="401522"></div>
+    <div id="yohoho-trailer" data-player="trailer" data-title="Моана"></div>
+    <div id="yohoho-torrent"  data-player="torrent" data-title="Инферно"></div>
 </div>
 
 <script src="yo.js"></script>
-
-<script>
-    function yohoho(data) {
-        for (var key in document.querySelector('#yohoho').dataset) {
-            if (document.querySelector('#yohoho').dataset.hasOwnProperty(key)) {
-                document.querySelector('#yohoho').dataset[key] = '';
-            }
-        }
-        for (var key2 in data) {
-            if (data.hasOwnProperty(key2)) {
-                document.querySelector('#yohoho').dataset[key2] = data[key2];
-            }
-        }
-        console.log(document.querySelector('#yohoho').dataset);
-        return yo();
-    }
-</script>
+<script>yo()</script>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

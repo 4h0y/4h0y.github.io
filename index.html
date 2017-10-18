@@ -89,7 +89,7 @@
             var title = document.querySelector('#search-title');
             title.addEventListener('keyup', function (event) {
                 event.preventDefault();
-                if (event.keyCode == 13 && title && title.value) {
+                if (event.keyCode === 13 && title && title.value) {
                     var yohoho = document.querySelector('#yohoho');
                     yohoho.dataset.title = title.value;
                     return yo();

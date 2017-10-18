@@ -1,9 +1,25 @@
-document.addEventListener('DOMContentLoaded', yo);
+document.addEventListener('DOMContentLoaded', ahoy_yo);
 
-function yo() {
+function ahoy_yo() {
+    var a = document.querySelectorAll('[data-ahoy]');
+    if (a && a.length) {
+        for (var i in a) {
+            if (a.hasOwnProperty(i) && a) {
+                a.addEventListener('click', function() {
+                    yo(this.getAttribute('data-ahoy'));
+                });
+            }
+        }
+    }
+    else {
+        yo();
+    }
+}
+
+function yo(sel) {
     var h, w, i, l, s, t = false, p = '';
 
-    var yohoho = document.querySelector('#yohoho');
+    var yohoho = document.querySelector('#' + (sel) ? sel : 'yohoho');
     if (!yohoho) {
         yohoho = document.querySelector('#yohoho-online');
         if (!yohoho) {
