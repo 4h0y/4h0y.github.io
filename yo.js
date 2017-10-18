@@ -19,8 +19,9 @@ function ahoy_yo() {
 function yo(sel) {
     var h, w, i, l, s, t = false, p = '';
 
+    console.log('#' + (sel) ? sel : 'yohoho');
     var yohoho = document.querySelector('#' + (sel) ? sel : 'yohoho');
-    console.log((sel) ? sel : 'yohoho', yohoho);
+    console.log(yohoho);
     if (!yohoho) {
         yohoho = document.querySelector('#yohoho-online');
         if (!yohoho) {
