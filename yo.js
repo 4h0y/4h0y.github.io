@@ -159,8 +159,8 @@ function yo(sel) {
                 var key = keys[i].toLowerCase().trim();
                 if (players.hasOwnProperty(key) && players[key]) {
                     if (key === 'moonwalk') {
-                        if (options.iframe_url) {
-                            var reg = options.iframe_url.match(/^([a-z0-9]*?)\|([0-9]*?)\|([0-9]*?)$/i);
+                        if (options.start_episode) {
+                            var reg = options.start_episode.match(/^([a-z0-9]*?)\|([0-9]*?)\|([0-9]*?)$/i);
                             if (reg && reg.length === 4) {
                                 players[key] = players[key].replace(/serial\/([a-z0-9]*?)\//i, 'serial/' + reg[1] + '/');
                                 players[key] = (players[key].indexOf('?')+1)
