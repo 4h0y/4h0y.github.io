@@ -160,9 +160,15 @@ function yo(sel) {
                 if (players.hasOwnProperty(key) && players[key]) {
                     if (key === 'moonwalk') {
                         if (options.iframe_url) {
-                            players[key] = decodeURIComponent(options.iframe_url);
+                            var reg = options.iframe_url.match(/^([a-z0-9]*?)\|([0-9]*?)\|([0-9]*?)$/i);
+                            if (reg && reg.length === 4) {
+                                players[key] = players[key].replace(/serial\/([a-z0-9]*?)\//i, 'serial/' + reg[1] + '/');
+                                players[key] = (players[key].indexOf('?')+1)
+                                    ? players[key] + '&season=' + reg[2] + '&episode=' + reg[3]
+                                    : players[key] + '?season=' + reg[2] + '&episode=' + reg[3]
+                            }
                         }
-                        else if (options.start_time) {
+                        if (options.start_time) {
                             players[key] = (players[key].indexOf('?')+1)
                                 ? players[key] + '&start_time=' + options.start_time
                                 : players[key] + '?start_time=' + options.start_time
