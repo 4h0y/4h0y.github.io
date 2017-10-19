@@ -158,11 +158,16 @@ function yo(sel) {
             for (var i = 0, len = keys.length; i < len; i++) {
                 var key = keys[i].toLowerCase().trim();
                 if (players.hasOwnProperty(key) && players[key]) {
-                    players[key] = (key === 'moonwalk' && options.start_time)
-                        ? (players[key].indexOf('?')+1)
-                            ? players[key] + '&start_time=' + options.start_time
-                            : players[key] + '?start_time=' + options.start_time
-                        : players[key];
+                    if (key === 'moonwalk') {
+                        if (options.iframe_url) {
+                            players[key] = decodeURIComponent(options.iframe_url);
+                        }
+                        else if (options.start_time) {
+                            players[key] = (players[key].indexOf('?')+1)
+                                ? players[key] + '&start_time=' + options.start_time
+                                : players[key] + '?start_time=' + options.start_time
+                        }
+                    }
                     var option = document.createElement('div');
                     option.setAttribute('onclick', 'showPlayer("' + players[key] + '", this)');
                     option.dataset.iframe = players[key];
