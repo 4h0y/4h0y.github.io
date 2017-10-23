@@ -133,6 +133,26 @@
             </div>
             <div class="code">
                 <span class="comment">
+                    &lt;!-- Вставляете в место, где должн быть EN плеер --&gt;
+                </span>
+                <br>
+                <span class="tag">&lt;div</span>
+                <span> </span>
+                <span class="attr-name">id=&quot;</span><span class="attr-value">yohoho</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">vodlocker</span><span class="attr-name">&quot;</span>
+                <span> </span>
+                <span class="attr-name">data-language=&quot;</span><span class="attr-value">en</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <span> </span>
+                <span class="attr-name">data-title=&quot;</span><span class="attr-value">Avatar</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/div&gt;</span>
+                <br>
+                <span class="tag">&lt;script</span>
+                <span> </span>
+                <span class="attr-name">src=&quot;</span><span class="attr-value">//yohoho.cc/yo.js</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/script&gt;</span>
+                <div class="example" data-ahoy="yohoho-vodlocker">Показать</div>
+            </div>
+            <div class="code">
+                <span class="comment">
                     Параметр <span class="attr-name">data-title</span> (поиск торрентов, трейлера и плееров)
                 </span>
                 <br>
@@ -173,6 +193,9 @@
                 <span class="attr-name">data-player=&quot;</span><span class="attr-value">allserials</span><span class="attr-name">&quot;</span>
                 <span class="comment"> - плеер allserials.tv</span>
                 <br>
+                <br>
+                <span class="attr-name">data-player=&quot;</span><span class="attr-value">vodlocker</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - плеер vodlocker.to</span>
                 <span class="attr-name">data-player=&quot;</span><span class="attr-value">trailer</span><span class="attr-name">&quot;</span>
                 <span class="comment"> - трейлер с YouTube</span>
                 <br>
@@ -231,6 +254,17 @@
                 <span class="attr-name">data-youtube=&quot;</span><span class="attr-value">94a08da1fecbb6e8b46</span><span class="attr-name">&quot;</span>
                 <span class="comment"> - Ваш токен YouTube API</span>
                 <br>
+            </div>
+            <div class="code">
+                <span class="comment">
+                    Параметр <span class="attr-name">data-language</span> и <span class="attr-name">data-country</span>
+                </span>
+                <br>
+                <span class="attr-name">data-language=&quot;</span><span class="attr-value">ru</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - ISO 639-1 код названия языка</span>
+                <br>
+                <span class="attr-name">data-country=&quot;</span><span class="attr-value">RU</span><span class="attr-name">&quot;</span>
+                <span class="comment"> - ISO 3166-1 код названия страны</span>
             </div>
             <div class="text-muted text-justify">
                 <h1>
@@ -330,6 +364,7 @@
     <div id="yohoho-kinopoisk" data-kinopoisk="401522"></div>
     <div id="yohoho-trailer" data-player="trailer" data-title="Моана"></div>
     <div id="yohoho-torrent" data-player="torrent" data-title="Инферно"></div>
+    <div id="yohoho-vodlocker" data-player="vodlocker" data-language="en" data-title="Avatar"></div>
 </div>
 
 <script src="yo.js"></script>
@@ -346,7 +381,7 @@
     });
 </script>
 
-<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42913814 = new Ya.Metrika({ id:42913814, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42913814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42913814 = new Ya.Metrika({ id:42913814, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera === "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42913814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 </body>
 </html>
