@@ -34,7 +34,7 @@ function yo(sel) {
     }
 
     var options = [].slice.call(yohoho.attributes).reduce(function (o, a) {
-        return /^data-/.test(a.name) && (o[a.name.substr(5)] = a.value), o;
+        return /^data-/.test(a.name) && (o[a.name.substr(5)] = decodeURIComponent(a.value)), o;
     }, {});
 
     if (options.title && options.title.indexOf('трейлер')+1 || t) {
