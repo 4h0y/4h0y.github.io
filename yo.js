@@ -179,7 +179,7 @@ function yo(sel) {
                     option.dataset.iframe = players[key];
                     if (btns.hasOwnProperty(key) && btns[key]) {
                         j++;
-                        option.innerText = j + '►' + btns[key];
+                        option.innerText = j + '► ' + btns[key];
                     }
                     else if (key === 'trailer') {
                         j++;
