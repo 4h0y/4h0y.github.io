@@ -131,7 +131,15 @@ function yo(sel) {
         w = 610;
     }
 
-    if (parseInt(yohoho.offsetHeight) && w/3 < parseInt(yohoho.offsetHeight)) {
+    if (parseInt(yohoho.offsetHeight) && parseInt(yohoho.offsetHeight) < 370) {
+        if (parseInt(yohoho.parentNode.offsetHeight) && parseInt(yohoho.parentNode.offsetHeight) >= 370) {
+            h = parseInt(yohoho.parentNode.offsetHeight);
+        }
+        else {
+            h = 370;
+        }
+    }
+    else if (parseInt(yohoho.offsetHeight) && w/3 < parseInt(yohoho.offsetHeight)) {
         h = parseInt(yohoho.offsetHeight);
     }
     else if (parseInt(yohoho.parentNode.offsetHeight) && w/3 < parseInt(yohoho.parentNode.offsetHeight)) {
@@ -179,6 +187,7 @@ function yo(sel) {
                     option.dataset.iframe = players[key];
                     if (btns.hasOwnProperty(key) && btns[key]) {
                         j++;
+                        btns[key] = btns[key].replace('{N}', j);
                         option.innerText = j + '► ' + btns[key];
                     }
                     else if (key === 'trailer') {
