@@ -54,7 +54,7 @@ function yo(sel) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'moonwalk: {Q}|{T}, hdgo: {Q}|{T}, iframe: {Q}|{T}';
+        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, iframe: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
@@ -215,12 +215,14 @@ function yo(sel) {
                                             : players[key].translate.toUpperCase()
                             : '';
                         j++;
-                        btns[key] = btns[key].replace('{N}', j);
-                        btns[key] = btns[key].replace('{Q}', q);
-                        btns[key] = btns[key].replace('{T}', t);
-                        option.innerText = j + '► ' + btns[key]
-                                .replace(/\s+/g, ' ')
-                                .replace(/(^\s*)|(\s*)$/g, '');
+                        btns[key] = btns[key]
+                            .replace('{N}', j)
+                            .replace('{Q}', q)
+                            .replace('{T}', t)
+                            .replace(/\s+/g, ' ')
+                            .replace(/(^\s*)|(\s*)$/g, '');
+                        btns[key] = (btns[key]) ? btns[key] : key.toUpperCase();
+                        option.innerText = j + '► ' + btns[key];
                     }
                     else if (key === 'trailer') {
                         j++;

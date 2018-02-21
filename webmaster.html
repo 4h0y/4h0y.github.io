@@ -278,17 +278,17 @@
                 </span>
                 <br>
                 <span class="tag">&lt;script&gt;</span>
-                <span class="attr-value">
+                <span class="attr-name">
                 <br>document.addEventListener('DOMContentLoaded', function() {
                 <br>&nbsp;&nbsp;window.addEventListener('message', function(e) {
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;if (!e || !e.data) return;
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;var quality = document.querySelector('[data-yo="quality"]');
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;var translate = document.querySelector('[data-yo="translate"]');
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;if (e.data.quality && quality) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quality.innerHTML = e.data.quality;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;var q = document.querySelector('[<span class="attr-value">data-yo="quality"</span>]');
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;var t = document.querySelector('[<span class="attr-value">data-yo="translate"</span>]');
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;if (e.data.quality && q) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.innerHTML = e.data.quality;
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;}
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;if (e.data.translate && translate) {
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translate.innerHTML = e.data.translate;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;if (e.data.translate && t) {
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.innerHTML = e.data.translate;
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;}
                 <br>&nbsp;&nbsp;});
                 <br>});
@@ -299,12 +299,12 @@
                 <span class="tag">&lt;span</span>
                 <span> </span>
                 <span class="attr-name">data-yo=&quot;</span><span class="attr-value">quality</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/span&gt;</span>
-                <span class="comment"> - будет показано качество на странице</span>
+                <span class="comment"> - будет показано качество</span>
                 <br>
                 <span class="tag">&lt;span</span>
                 <span> </span>
                 <span class="attr-name">data-yo=&quot;</span><span class="attr-value">translate</span><span class="attr-name">&quot;</span><span class="tag">&gt;&lt;/span&gt;</span>
-                <span class="comment"> - будет показан перевод на странице</span>
+                <span class="comment"> - будет показан перевод</span>
             </div>
             <div class="text-muted text-justify">
                 <h1>
