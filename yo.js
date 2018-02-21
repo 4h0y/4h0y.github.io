@@ -44,7 +44,7 @@ function yo(sel) {
     options.player = (options.title && options.title.indexOf('трейлер')+1 || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,kodik,allserials,iframe,trailer,torrent'
+            ? 'moonwalk,hdgo,iframe,kodik,allserials,trailer,torrent'
             : options.player;
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
@@ -52,6 +52,9 @@ function yo(sel) {
         : '2A3440';
 
     var btns = {};
+    options.button = (options.button)
+        ? options.button
+        : 'moonwalk: {Q}|{T}, hdgo: {Q}|{T}, iframe: {Q}|{T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
@@ -165,30 +168,59 @@ function yo(sel) {
             var j = 0;
             for (var i = 0, len = keys.length; i < len; i++) {
                 var key = keys[i].toLowerCase().trim();
-                if (players.hasOwnProperty(key) && players[key]) {
+                if (players.hasOwnProperty(key) && players[key] && players[key].iframe) {
                     if (key === 'moonwalk') {
                         if (options.start_episode) {
                             var reg = options.start_episode.match(/^([a-z0-9]*?)\|([0-9]*?)\|([0-9]*?)$/i);
                             if (reg && reg.length === 4) {
-                                players[key] = players[key].replace(/serial\/([a-z0-9]*?)\//i, 'serial/' + reg[1] + '/');
-                                players[key] = (players[key].indexOf('?')+1)
-                                    ? players[key] + '&season=' + reg[2] + '&episode=' + reg[3]
-                                    : players[key] + '?season=' + reg[2] + '&episode=' + reg[3]
+                                players[key].iframe = players[key].iframe
+                                    .replace(/serial\/([a-z0-9]*?)\//i, 'serial/' + reg[1] + '/');
+                                players[key].iframe = (players[key].iframe.indexOf('?')+1)
+                                    ? players[key].iframe + '&season=' + reg[2] + '&episode=' + reg[3]
+                                    : players[key].iframe + '?season=' + reg[2] + '&episode=' + reg[3]
                             }
                         }
                         if (options.start_time) {
-                            players[key] = (players[key].indexOf('?')+1)
-                                ? players[key] + '&start_time=' + options.start_time
-                                : players[key] + '?start_time=' + options.start_time
+                            players[key].iframe = (players[key].iframe.indexOf('?')+1)
+                                ? players[key].iframe + '&start_time=' + options.start_time
+                                : players[key].iframe + '?start_time=' + options.start_time
                         }
                     }
+                    players[key].quality = (players[key].quality)
+                        ? players[key].quality.replace(/"/g, '\'')
+                        : '';
+                    players[key].translate = (players[key].translate)
+                        ? players[key].translate.replace(/"/g, '\'')
+                        : '';
                     var option = document.createElement('div');
-                    option.setAttribute('onclick', 'showPlayer("' + players[key] + '", this)');
-                    option.dataset.iframe = players[key];
+                    option.setAttribute('onclick', 'showPlayer("' + players[key].iframe + '", "' + players[key].quality + '", "' + players[key].translate + '", this)');
+                    option.dataset.iframe = players[key].iframe;
+                    option.dataset.quality = players[key].quality;
+                    option.dataset.translate = players[key].translate;
                     if (btns.hasOwnProperty(key) && btns[key]) {
+                        var q = (players[key].quality)
+                            ? players[key].quality
+                                .toUpperCase()
+                                .replace(/\s?ХОРОШЕЕ\s?|\s?СРЕДНЕЕ\s?|\s?ПЛОХОЕ\s?/gi, '')
+                            : '';
+                        var t = (players[key].translate)
+                            ? (players[key].translate.toUpperCase().indexOf('ДУБЛ')+1)
+                                ? 'ДУБЛЯЖ'
+                                : (players[key].translate.toUpperCase().indexOf('ПРОФ')+1)
+                                    ? 'ПРОФ.'
+                                    : (players[key].translate.toUpperCase().indexOf('ЛЮБИТ')+1)
+                                        ? 'ЛЮБИТ.'
+                                        : (players[key].translate.toUpperCase().indexOf('АВТОР')+1)
+                                            ? 'АВТОР.'
+                                            : players[key].translate.toUpperCase()
+                            : '';
                         j++;
                         btns[key] = btns[key].replace('{N}', j);
-                        option.innerText = j + '► ' + btns[key];
+                        btns[key] = btns[key].replace('{Q}', q);
+                        btns[key] = btns[key].replace('{T}', t);
+                        option.innerText = j + '► ' + btns[key]
+                                .replace(/\s+/g, ' ')
+                                .replace(/(^\s*)|(\s*)$/g, '');
                     }
                     else if (key === 'trailer') {
                         j++;
@@ -203,7 +235,7 @@ function yo(sel) {
                         option.innerText = j + '► ' + key.toUpperCase();
                     }
                     if (first) {
-                        showPlayer(players[key], option, buttons);
+                        showPlayer(players[key].iframe, players[key].quality, players[key].translate, option, buttons);
                         first = false;
                     }
                     buttons.appendChild(option);
@@ -220,12 +252,13 @@ function yo(sel) {
 
 }
 
-function showPlayer(iframe, element, buttons) {
+function showPlayer(iframe, quality, translate, element, buttons) {
+    window.parent.postMessage({"quality": quality, "translate": translate}, "*");
     var yohohoLoading = document.querySelector('#yohoho-loading');
     yohohoLoading.style.display = 'block';
     setTimeout(function () {
         yohohoLoading.style.display = 'none';
-    },2000);
+    }, 2000);
     var yohohoIframe = document.querySelector('#yohoho-iframe');
     yohohoIframe.style.display = 'block';
     yohohoIframe.setAttribute('src', iframe);
