@@ -212,7 +212,13 @@ function yo(sel) {
                                         ? 'ЛЮБИТ.'
                                         : (players[key].translate.toUpperCase().indexOf('АВТОР')+1)
                                             ? 'АВТОР.'
-                                            : players[key].translate.toUpperCase()
+                                            : (players[key].translate.toUpperCase().indexOf('МНОГОГОЛ')+1)
+                                                ? 'МНОГОГОЛ.'
+                                                : (players[key].translate.toUpperCase().indexOf('ОДНОГОЛ')+1)
+                                                    ? 'ОДНОГОЛ.'
+                                                    : (players[key].translate.toUpperCase().indexOf('ДВУХГОЛ')+1)
+                                                        ? 'ДВУХГОЛ.'
+                                                        : players[key].translate.toUpperCase()
                             : '';
                         j++;
                         btns[key] = btns[key]
