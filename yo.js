@@ -218,7 +218,9 @@ function yo(sel) {
                                                     ? 'ОДНОГОЛ.'
                                                     : (players[key].translate.toUpperCase().indexOf('ДВУХГОЛ')+1)
                                                         ? 'ДВУХГОЛ.'
-                                                        : players[key].translate.toUpperCase()
+                                                        : (players[key].translate.toUpperCase().indexOf('ОРИГИНАЛ')+1)
+                                                            ? 'ОРИГИНАЛ' :
+                                                            players[key].translate.toUpperCase()
                             : '';
                         j++;
                         btns[key] = btns[key]
