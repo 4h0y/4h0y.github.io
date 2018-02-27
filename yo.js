@@ -158,10 +158,9 @@ function yo(sel) {
     i.setAttribute('height', h);
     yohoho.setAttribute('style', style);
 
-    /*var protocol = (window && window.top && window.top.location && window.top.location.protocol)
+    var protocol = (window && window.top && window.top.location && window.top.location.protocol)
         ? window.top.location.protocol
-        : 'https';*/
-    var protocol = 'https';
+        : 'http';
     httpGetAsync(protocol + '//4h0y.yohoho.cc', p,
         function (players) {
             var first = true;
