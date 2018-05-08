@@ -54,7 +54,7 @@ function yo(sel) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, newvideo: {Q} {T}, kodik: {Q} {T} iframe: {Q} {T}';
+        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, newvideo: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
