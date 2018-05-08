@@ -198,9 +198,15 @@ function yo(sel) {
                     option.dataset.translate = players[key].translate;
                     if (btns.hasOwnProperty(key) && btns[key]) {
                         var q = (players[key].quality)
-                            ? players[key].quality
-                                .toUpperCase()
-                                .replace(/\s?ХОРОШЕЕ\s?|\s?СРЕДНЕЕ\s?|\s?ПЛОХОЕ\s?/gi, '')
+                            ? (players[key].quality.toUpperCase().search(/TS|TC|SCR|CAM/gi)+1)
+                                ? 'ЭКРАН'
+                                : (players[key].quality.toUpperCase().search(/720P/gi)+1)
+                                    ? '720P'
+                                    : (players[key].quality.toUpperCase().search(/1080P/gi)+1)
+                                        ? '1080P'
+                                        : players[key].quality
+                                            .toUpperCase()
+                                            .replace(/\s?ХОРОШЕЕ\s?|\s?СРЕДНЕЕ\s?|\s?ПЛОХОЕ\s?/gi, '')
                             : '';
                         var t = (players[key].translate)
                             ? (players[key].translate.toUpperCase().indexOf('ДУБЛ')+1)
@@ -218,8 +224,8 @@ function yo(sel) {
                                                     : (players[key].translate.toUpperCase().indexOf('ДВУХГОЛ')+1)
                                                         ? 'ДВУХГОЛ.'
                                                         : (players[key].translate.toUpperCase().indexOf('ОРИГИНАЛ')+1)
-                                                            ? 'ОРИГИНАЛ' :
-                                                            players[key].translate.toUpperCase()
+                                                            ? 'ОРИГИНАЛ'
+                                                            : players[key].translate.toUpperCase()
                             : '';
                         j++;
                         btns[key] = btns[key]
