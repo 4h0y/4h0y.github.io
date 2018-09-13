@@ -44,7 +44,7 @@ function yo(sel) {
     options.player = (options.title && options.title.indexOf('трейлер')+1 || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,iframe,newvideo,kodik,allserials,trailer,torrent'
+            ? 'moonwalk,hdgo,iframe,hdbaza,kodik,trailer,torrent'
             : options.player;
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
@@ -54,7 +54,7 @@ function yo(sel) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, newvideo: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
+        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, hdbaza: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
