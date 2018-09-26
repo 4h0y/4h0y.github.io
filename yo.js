@@ -17,7 +17,7 @@ function ahoy_yo() {
 }
 
 function yo(sel) {
-    var h, w, i, l, s, t = false, p = '';
+    var h, a, w, i, l, d, s, t = false, p = '';
 
     var yohoho = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
     if (!yohoho) {
@@ -115,7 +115,10 @@ function yo(sel) {
 
     l = document.createElement('div');
     l.setAttribute('id', 'yohoho-loading');
-    yohoho.innerHTML = '';
+    d = document.createElement('div');
+    var attr = Array.prototype.slice.call(yohoho.attributes);
+    while(a = attr.pop()) {d.setAttribute(a.nodeName, a.nodeValue);}
+    yohoho.parentNode.replaceChild(d, yohoho);
     yohoho.appendChild(l);
 
     i = document.createElement('iframe');
