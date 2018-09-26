@@ -19,12 +19,12 @@ function ahoy_yo() {
 function yo(sel) {
     var h, a, w, i, l, d, s, t = false, p = '';
 
-    var yohoho = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
-    if (!yohoho) {
-        yohoho = document.querySelector('#yohoho-online');
-        if (!yohoho) {
-            yohoho = document.querySelector('#yohoho-torrent');
-            if (!yohoho) {
+    d = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
+    if (!d) {
+        d = document.querySelector('#yohoho-online');
+        if (!d) {
+            d = document.querySelector('#yohoho-torrent');
+            if (!d) {
                 return false;
             }
             else {
@@ -32,6 +32,11 @@ function yo(sel) {
             }
         }
     }
+
+    var yohoho = document.createElement('div');
+    var attr = Array.prototype.slice.call(d.attributes);
+    while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, a.nodeValue);}
+    d.parentNode.replaceChild(yohoho, d);
 
     var options = [].slice.call(yohoho.attributes).reduce(function (o, a) {
         return /^data-/.test(a.name) && (o[a.name.substr(5)] = decodeURIComponent(a.value)), o;
@@ -115,10 +120,7 @@ function yo(sel) {
 
     l = document.createElement('div');
     l.setAttribute('id', 'yohoho-loading');
-    d = document.createElement('div');
-    var attr = Array.prototype.slice.call(yohoho.attributes);
-    while(a = attr.pop()) {d.setAttribute(a.nodeName, a.nodeValue);}
-    yohoho.parentNode.replaceChild(d, yohoho);
+    yohoho.innerHTML = '';
     yohoho.appendChild(l);
 
     i = document.createElement('iframe');
