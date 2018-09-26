@@ -17,14 +17,14 @@ function ahoy_yo() {
 }
 
 function yo(sel) {
-    var h, a, w, i, l, d, s, t = false, p = '';
+    var h, a, w, i, l, y, s, t = false, p = '';
 
-    d = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
-    if (!d) {
-        d = document.querySelector('#yohoho-online');
-        if (!d) {
-            d = document.querySelector('#yohoho-torrent');
-            if (!d) {
+    y = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
+    if (!y) {
+        y = document.querySelector('#yohoho-online');
+        if (!y) {
+            y = document.querySelector('#yohoho-torrent');
+            if (!y) {
                 return false;
             }
             else {
@@ -34,9 +34,9 @@ function yo(sel) {
     }
 
     var yohoho = document.createElement('div');
-    var attr = Array.prototype.slice.call(d.attributes);
+    var attr = Array.prototype.slice.call(y.attributes);
     while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, a.nodeValue);}
-    d.parentNode.replaceChild(yohoho, d);
+    y.parentNode.replaceChild(yohoho, y);
 
     var options = [].slice.call(yohoho.attributes).reduce(function (o, a) {
         return /^data-/.test(a.name) && (o[a.name.substr(5)] = decodeURIComponent(a.value)), o;
