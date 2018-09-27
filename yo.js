@@ -36,6 +36,7 @@ function yo(sel) {
     var yohoho = document.createElement('div');
     var attr = Array.prototype.slice.call(y.attributes);
     while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, a.nodeValue);}
+    yohoho.innerHTML = y.innerHTML;
     y.parentNode.replaceChild(yohoho, y);
 
     var options = [].slice.call(yohoho.attributes).reduce(function (o, a) {
