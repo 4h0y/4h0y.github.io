@@ -43,11 +43,11 @@ function yo(sel) {
         return /^data-/.test(a.name) && (o[a.name.substr(5)] = decodeURIComponent(a.value)), o;
     }, {});
 
-    if (options.title && options.title.indexOf('трейлер')+1 || t) {
+    if ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t) {
         options.player = 'trailer';
     }
 
-    options.player = (options.title && options.title.indexOf('трейлер')+1 || t)
+    options.player = ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t)
         ? 'trailer'
         : (!options.player)
             ? 'moonwalk,hdgo,iframe,hdbaza,kodik,trailer,torrent'
@@ -56,6 +56,10 @@ function yo(sel) {
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
         : '2A3440';
+
+    var language = (options.language && /en/i.test(options.language))
+        ? {"trailer":"TRAILER","torrent":"DOWNLOAD"}
+        : {"trailer":"ТРЕЙЛЕР","torrent":"СКАЧАТЬ"};
 
     var btns = {};
     options.button = (options.button)
@@ -245,11 +249,11 @@ function yo(sel) {
                     }
                     else if (key === 'trailer') {
                         j++;
-                        option.innerText = j + '► ТРЕЙЛЕР';
+                        option.innerText = j + '► ' + language.trailer.toUpperCase();
                     }
                     else if (key === 'torrent') {
                         j++;
-                        option.innerText = j + '► СКАЧАТЬ';
+                        option.innerText = j + '► ' + language.torrent.toUpperCase();
                     }
                     else {
                         j++;
