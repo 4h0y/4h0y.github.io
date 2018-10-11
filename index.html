@@ -66,7 +66,7 @@
     <div class="search-line" id="yohoho">
         <div class="brand">Yohoho</div>
         <div class="form">
-            <input type="text" placeholder="Название фильма" id="search-title" name="title" style="width: 250px">
+            <input type="text" placeholder="Название фильма или URL КиноПоиск" id="search-title" name="title" style="width: 250px">
             <input type="button" id="search" value="Найти">
         </div>
     </div>
@@ -82,7 +82,18 @@
                 var title = document.querySelector('#search-title');
                 if (title && title.value) {
                     var yohoho = document.querySelector('#yohoho');
-                    yohoho.dataset.title = title.value;
+                    if (/kinopoisk\.ru/i.test(title.value)) {
+                        var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
+                        if (exec && exec[2]) {
+                            yohoho.dataset.kinopoisk = exec[2];
+                        }
+                    }
+                    else if (/^\d+$/.test(title.value)) {
+                        yohoho.dataset.kinopoisk = title.value;
+                    }
+                    else {
+                        yohoho.dataset.title = title.value;
+                    }
                     return yo();
                 }
             });
@@ -91,7 +102,18 @@
                 event.preventDefault();
                 if (event.keyCode === 13 && title && title.value) {
                     var yohoho = document.querySelector('#yohoho');
-                    yohoho.dataset.title = title.value;
+                    if (/kinopoisk\.ru/i.test(title.value)) {
+                        var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
+                        if (exec && exec[2]) {
+                            yohoho.dataset.kinopoisk = exec[2];
+                        }
+                    }
+                    else if (/^\d+$/.test(title.value)) {
+                        yohoho.dataset.kinopoisk = title.value;
+                    }
+                    else {
+                        yohoho.dataset.title = title.value;
+                    }
                     return yo();
                 }
             });
@@ -158,8 +180,6 @@
         },1000);
     })();
 </script>
-
-<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter42913814 = new Ya.Metrika({ id:42913814, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/42913814" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 </body>
 </html>
