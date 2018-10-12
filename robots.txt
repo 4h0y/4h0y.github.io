@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-Host: http://yohoho.cc
-
 Sitemap: http://yohoho.cc/sitemap.xml
