@@ -148,9 +148,10 @@
         var i = 0;
 
         function run(item) {
-            setTimeout(function () {
+            var t = setTimeout(function () {
                 document.querySelector('.index-seo').innerHTML = seo.replace(new RegExp(' ' + item + ' ', 'g'), ' <span style="color: #fff">' + item + '</span> ');
                 i = getRandom(0, items.length - 1);
+                clearTimeout(t);
                 run(items[i].replace(/[^A-Za-zА-Яа-яёЁ0-9]/gim, ''));
             }, 100);
         }
