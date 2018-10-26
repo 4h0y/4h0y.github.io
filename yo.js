@@ -50,7 +50,7 @@ function yo(sel) {
     options.player = ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,iframe,hdbaza,kodik,trailer,torrent'
+            ? 'moonwalk,hdgo,hdbaza,kodik,iframe,trailer,torrent'
             : options.player;
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
@@ -174,6 +174,9 @@ function yo(sel) {
             var buttons = document.createElement('div');
             buttons.setAttribute('id', 'yohoho-buttons');
             var keys = options.player.split(',');
+            if (/\/\/|%2F%2F/i.test(options.player)) {
+                keys = Object.keys(players);
+            }
             var j = 0;
             for (var i = 0, len = keys.length; i < len; i++) {
                 var key = keys[i].toLowerCase().trim();
