@@ -175,7 +175,13 @@ function yo(sel) {
             buttons.setAttribute('id', 'yohoho-buttons');
             var keys = options.player.split(',');
             if (/\/\/|%2F%2F/i.test(options.player)) {
-                keys = Object.keys(players);
+                var p = [];
+                for (var k = 0; k < keys.length; k++) {
+                    var re = keys[k].match(/^(.*?)(http.*|\/\/.*)$/i);
+                    if (!re || !re[1] || !re[1].trim()) continue;
+                    p.push(re[1].trim());
+                }
+                keys = p.length ? p : Object.keys(players);
             }
             var j = 0;
             for (var i = 0, len = keys.length; i < len; i++) {
