@@ -35,7 +35,7 @@ function yo(sel) {
 
     var yohoho = document.createElement('div');
     var attr = Array.prototype.slice.call(y.attributes);
-    while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, a.nodeValue);}
+    while(a = attr.pop()) {yohoho.setAttribute(a.nodeName, encodeURIComponent(a.nodeValue));}
     yohoho.innerHTML = y.innerHTML;
     y.parentNode.replaceChild(yohoho, y);
 
@@ -57,9 +57,9 @@ function yo(sel) {
         ? options.bg.replace(/[^0-9a-z]/ig, '')
         : '2A3440';
 
-    var language = (options.language && /en/i.test(options.language))
-        ? {"trailer":"TRAILER","torrent":"DOWNLOAD"}
-        : {"trailer":"ТРЕЙЛЕР","torrent":"СКАЧАТЬ"};
+    var language = (options.language && !/ru/i.test(options.language))
+        ? {"trailer":"TRAILER","torrent":"DOWNLOAD","next":"NEXT","prev":"PREV"}
+        : {"trailer":"ТРЕЙЛЕР","torrent":"СКАЧАТЬ","next":"ВПЕРЕД","prev":"НАЗАД"};
 
     var btns = {};
     options.button = (options.button)
@@ -73,6 +73,9 @@ function yo(sel) {
             }
         });
     }
+    options.button_limit = (options.button_limit && parseInt(options.button_limit) < 8)
+        ? parseInt(options.button_limit)
+        : 8;
 
     for (var data in options) {
         if (options.hasOwnProperty(data) && options[data]) {
@@ -211,7 +214,8 @@ function yo(sel) {
                         ? players[key].translate.replace(/"/g, '\'')
                         : '';
                     var option = document.createElement('div');
-                    option.setAttribute('onclick', 'showPlayer("' + players[key].iframe + '", "' + players[key].quality + '", "' + players[key].translate + '", this)');
+                    option.setAttribute('onclick', 'showPlayer("' + encodeURIComponent(players[key].iframe) + '", "' + players[key].quality + '", "' + players[key].translate + '", this)');
+                    option.dataset.page = Math.ceil((j+1)/options.button_limit) + '';
                     option.dataset.iframe = players[key].iframe;
                     option.dataset.quality = players[key].quality;
                     option.dataset.translate = players[key].translate;
@@ -273,6 +277,19 @@ function yo(sel) {
                         first = false;
                     }
                     buttons.appendChild(option);
+                    if (j && !(j % options.button_limit) && keys[i+1]) {
+                        var next = document.createElement('div');
+                        next.setAttribute('onclick', 'showPage(' + Math.ceil((j+1)/options.button_limit) + ')');
+                        next.dataset.page = Math.ceil(j/options.button_limit) + '';
+                        next.innerText = '-► ' + language.next;
+                        buttons.appendChild(next);
+
+                        var prev = document.createElement('div');
+                        prev.setAttribute('onclick', 'showPage(' + Math.ceil(j/options.button_limit) + ')');
+                        prev.dataset.page = Math.ceil((j+1)/options.button_limit) + '';
+                        prev.innerText = '◄- ' + language.prev;
+                        buttons.appendChild(prev);
+                    }
                 }
             }
             if (j < 1) {
@@ -281,6 +298,9 @@ function yo(sel) {
             }
             else if (j > 1) {
                 yohoho.appendChild(buttons);
+                if (keys.length > options.button_limit) {
+                    showPage(1);
+                }
             }
         });
 
@@ -295,7 +315,7 @@ function showPlayer(iframe, quality, translate, element, buttons) {
     }, 2000);
     var yohohoIframe = document.querySelector('#yohoho-iframe');
     yohohoIframe.style.display = 'block';
-    yohohoIframe.setAttribute('src', iframe);
+    yohohoIframe.setAttribute('src', decodeURIComponent(iframe));
     yohohoIframe.setAttribute('class', '');
     if (typeof element.setAttribute === 'function') {
         var yohohoActive = document.querySelectorAll('.yohoho-active');
@@ -319,6 +339,25 @@ function showPlayer(iframe, quality, translate, element, buttons) {
                 }
             }, 5);
         }, 5000);
+    }
+}
+
+function showPage(page) {
+    var yohohoPages = document.querySelectorAll('div[data-page]');
+    if (yohohoPages) {
+        for (var i = 0; i < yohohoPages.length; i++) {
+            yohohoPages[i].style.display = 'none';
+        }
+    }
+    var yohohoPage = document.querySelectorAll('div[data-page="' + page + '"]');
+    if (yohohoPage) {
+        for (var j = 0; j < yohohoPage.length; j++) {
+            yohohoPage[j].style.display = 'block';
+        }
+    }
+    var yohohoButtons = document.querySelector('#yohoho-buttons');
+    if (yohohoButtons) {
+        yohohoButtons.style.right = 0;
     }
 }
 
