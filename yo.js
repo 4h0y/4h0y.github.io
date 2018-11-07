@@ -76,6 +76,9 @@ function yo(sel) {
     options.button_limit = (options.button_limit && parseInt(options.button_limit) < 8)
         ? parseInt(options.button_limit)
         : 8;
+    options.separator = (options.separator)
+        ? options.separator
+        : ',';
 
     for (var data in options) {
         if (options.hasOwnProperty(data) && options[data]) {
@@ -176,7 +179,7 @@ function yo(sel) {
             var first = true;
             var buttons = document.createElement('div');
             buttons.setAttribute('id', 'yohoho-buttons');
-            var keys = options.player.split(',');
+            var keys = options.player.split(options.separator);
             if (/\/\/|%2F%2F/i.test(options.player)) {
                 var p = [];
                 for (var k = 0; k < keys.length; k++) {
