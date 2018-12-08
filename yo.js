@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', ahoy_yo);
+document.addEventListener('keydown', ahoy_key);
+
+function ahoy_key(event) {
+    if (!event || !event.keyCode) return;
+    var e = document.querySelectorAll('[data-event]');
+    if (e && e.length) {
+        for (var i = 0; i < e.length; i++) {
+            if (parseInt(e[i].dataset.event) === parseInt(event.keyCode) &&
+                typeof e[i].onclick === 'function') {
+                e[i].onclick.apply(e[i]);
+                return;
+            }
+        }
+    }
+}
 
 function ahoy_yo() {
     var a = document.querySelectorAll('[data-ahoy]');
@@ -79,6 +94,9 @@ function yo(sel) {
     options.separator = (options.separator)
         ? options.separator
         : ',';
+    options.autoplay = (options.autoplay)
+        ? 'autoplay=' + options.autoplay
+        : '';
 
     for (var data in options) {
         if (options.hasOwnProperty(data) && options[data]) {
@@ -210,6 +228,11 @@ function yo(sel) {
                                 : players[key].iframe + '?start_time=' + options.start_time
                         }
                     }
+                    if (options.autoplay) {
+                        players[key].iframe = (players[key].iframe.indexOf('?')+1)
+                            ? players[key].iframe + '&' + options.autoplay
+                            : players[key].iframe + '?' + options.autoplay
+                    }
                     players[key].quality = (players[key].quality)
                         ? players[key].quality.replace(/"/g, '\'')
                         : '';
@@ -218,6 +241,7 @@ function yo(sel) {
                         : '';
                     var option = document.createElement('div');
                     option.setAttribute('onclick', 'showPlayer("' + encodeURIComponent(players[key].iframe) + '", "' + players[key].quality + '", "' + players[key].translate + '", this)');
+                    option.dataset.event = '' + (j+49);
                     option.dataset.page = Math.ceil((j+1)/options.button_limit) + '';
                     option.dataset.iframe = players[key].iframe;
                     option.dataset.quality = players[key].quality;
@@ -283,12 +307,14 @@ function yo(sel) {
                     if (j && !(j % options.button_limit) && keys[i+1]) {
                         var next = document.createElement('div');
                         next.setAttribute('onclick', 'showPage(' + Math.ceil((j+1)/options.button_limit) + ')');
+                        next.dataset.keyCode = '39';
                         next.dataset.page = Math.ceil(j/options.button_limit) + '';
                         next.innerText = '-► ' + language.next;
                         buttons.appendChild(next);
 
                         var prev = document.createElement('div');
                         prev.setAttribute('onclick', 'showPage(' + Math.ceil(j/options.button_limit) + ')');
+                        prev.dataset.event = '37';
                         prev.dataset.page = Math.ceil((j+1)/options.button_limit) + '';
                         prev.innerText = '◄- ' + language.prev;
                         buttons.appendChild(prev);
