@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', ahoy_yo);
-document.addEventListener('keydown', ahoy_key);
 
 function ahoy_key(event) {
     if (!event || (!event.key && !event.keyCode)) return;
@@ -137,6 +136,10 @@ function yo(sel) {
 
     if (!options.kinopoisk && !options.title) {
         return false;
+    }
+
+    if (options.tv) {
+        document.addEventListener('keydown', ahoy_key);
     }
 
     var yohoho_loading = document.querySelector('#yohoho-loading');
