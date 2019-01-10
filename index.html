@@ -82,6 +82,7 @@
             var hash = window.location.hash.substring(1);
             if (title && hash) {
                 title.value = hash;
+                return parse();
             }
         }
         if (search) {
