@@ -77,46 +77,43 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var search = document.querySelector('#search');
+        var title = document.querySelector('#search-title');
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1);
+            if (title && hash) {
+                title.value = hash;
+            }
+        }
         if (search) {
             search.addEventListener('click', function () {
-                var title = document.querySelector('#search-title');
-                if (title && title.value) {
-                    var yohoho = document.querySelector('#yohoho');
-                    if (/kinopoisk\.ru/i.test(title.value)) {
-                        var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
-                        if (exec && exec[2]) {
-                            yohoho.dataset.kinopoisk = exec[2];
-                        }
-                    }
-                    else if (/^\d+$/.test(title.value)) {
-                        yohoho.dataset.kinopoisk = title.value;
-                    }
-                    else {
-                        yohoho.dataset.title = title.value;
-                    }
-                    return yo();
-                }
+                return parse();
             });
-            var title = document.querySelector('#search-title');
+        }
+        if (title) {
             title.addEventListener('keyup', function (event) {
                 event.preventDefault();
-                if (event.keyCode === 13 && title && title.value) {
-                    var yohoho = document.querySelector('#yohoho');
-                    if (/kinopoisk\.ru/i.test(title.value)) {
-                        var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
-                        if (exec && exec[2]) {
-                            yohoho.dataset.kinopoisk = exec[2];
-                        }
-                    }
-                    else if (/^\d+$/.test(title.value)) {
-                        yohoho.dataset.kinopoisk = title.value;
-                    }
-                    else {
-                        yohoho.dataset.title = title.value;
-                    }
-                    return yo();
+                if (event.keyCode === 13) {
+                    return parse();
                 }
             });
+        }
+        function parse() {
+            var yohoho = document.querySelector('#yohoho');
+            if (title && title.value && yohoho) {
+                if (/kinopoisk\.ru/i.test(title.value)) {
+                    var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
+                    if (exec && exec[2]) {
+                        yohoho.dataset.kinopoisk = exec[2];
+                    }
+                }
+                else if (/^\d+$/.test(title.value)) {
+                    yohoho.dataset.kinopoisk = title.value;
+                }
+                else {
+                    yohoho.dataset.title = title.value;
+                }
+                return yo();
+            }
         }
     });
 </script>
