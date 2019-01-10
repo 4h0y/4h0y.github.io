@@ -105,13 +105,16 @@
                     var exec = /(film\/|movie\/).*?([0-9]{3,7})\//gi.exec(title.value);
                     if (exec && exec[2]) {
                         yohoho.dataset.kinopoisk = exec[2];
+                        window.location.hash = '#' + yohoho.dataset.kinopoisk;
                     }
                 }
                 else if (/^\d+$/.test(title.value)) {
                     yohoho.dataset.kinopoisk = title.value;
+                    window.location.hash = '#' + title.value;
                 }
                 else {
                     yohoho.dataset.title = title.value;
+                    window.location.hash = '#' + title.value;
                 }
                 return yo();
             }
