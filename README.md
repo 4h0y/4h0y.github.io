@@ -8,10 +8,10 @@
 <script src="//yohoho.cc/yo.js"></script>
 ```
 
-## Запасные адреса сайта
+## Зеркала сайта
 
 - [4h0y.github.io](https://4h0y.github.io)
 - [4h0y.gitlab.io](https://4h0y.gitlab.io)
 - [4h0y.bitbucket.io](https://4h0y.bitbucket.io)
 
-#### 2017 Yohoho
+#### 2020 Yohoho
