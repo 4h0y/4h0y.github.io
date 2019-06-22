@@ -371,7 +371,13 @@ function showPlayer(iframe, quality, translate, element, buttons, size) {
     }, 2000);
     var yohohoIframe = document.querySelector('#yohoho-iframe');
     yohohoIframe.style.display = 'block';
-    yohohoIframe.setAttribute('src', decodeURIComponent(iframe));
+    if (iframe.indexOf('4h0y') + 1) {
+        httpGetAsync(iframe, '',function (json, html) {
+            yohohoIframe.setAttribute('src', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
+        });
+    } else {
+        yohohoIframe.setAttribute('src', decodeURIComponent(iframe));
+    }
     yohohoIframe.setAttribute('class', '');
     if (typeof element.setAttribute === 'function') {
         var yohohoActive = document.querySelectorAll('.yohoho-active');
@@ -422,7 +428,7 @@ function httpGetAsync(url, body, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-            callback(tryParseJSON(xmlHttp.responseText));
+            callback(tryParseJSON(xmlHttp.responseText), xmlHttp.responseText);
         }
     };
     xmlHttp.open('POST', url, true);
