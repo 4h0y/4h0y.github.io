@@ -372,7 +372,7 @@ function showPlayer(iframe, quality, translate, element, buttons, size) {
     var yohohoIframe = document.querySelector('#yohoho-iframe');
     yohohoIframe.style.display = 'block';
     if (iframe.indexOf('4h0y') + 1) {
-        httpGetAsync(iframe, '',function (json, html) {
+        httpGetAsync(decodeURIComponent(iframe), '',function (json, html) {
             yohohoIframe.setAttribute('src', 'data:text/html;charset=utf-8,' + encodeURIComponent(html));
         });
     } else {
