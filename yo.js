@@ -137,7 +137,7 @@ function yo(sel) {
         }
     }
 
-    if (!options.kinopoisk && !options.title) {
+    if (!options.kinopoisk && !options.title && !options.imdb && !options.tmdb) {
         return false;
     }
 
