@@ -286,23 +286,27 @@ function yo(sel) {
                                             .replace(/\s?ХОРОШЕЕ\s?|\s?СРЕДНЕЕ\s?|\s?ПЛОХОЕ\s?/gi, '')
                             : '';
                         var t = (players[key].translate)
-                            ? (players[key].translate.toUpperCase().indexOf('ДУБЛ')+1)
+                            ? /ДУБЛ/i.test(players[key].translate)
                                 ? 'ДУБЛЯЖ'
-                                : (players[key].translate.toUpperCase().indexOf('ПРОФ')+1)
+                                : /ПРОФ/i.test(players[key].translate)
                                     ? 'ПРОФ.'
-                                    : (players[key].translate.toUpperCase().indexOf('ЛЮБИТ')+1)
+                                    : /ЛЮБИТ/i.test(players[key].translate)
                                         ? 'ЛЮБИТ.'
-                                        : (players[key].translate.toUpperCase().indexOf('АВТОР')+1)
+                                        : /АВТОР/i.test(players[key].translate)
                                             ? 'АВТОР.'
-                                            : (players[key].translate.toUpperCase().indexOf('МНОГОГОЛ')+1)
+                                            : /МНОГОГОЛ/i.test(players[key].translate)
                                                 ? 'МНОГОГОЛ.'
-                                                : (players[key].translate.toUpperCase().indexOf('ОДНОГОЛ')+1)
+                                                : /ОДНОГОЛ/i.test(players[key].translate)
                                                     ? 'ОДНОГОЛ.'
-                                                    : (players[key].translate.toUpperCase().indexOf('ДВУХГОЛ')+1)
+                                                    : /ДВУХГОЛ/i.test(players[key].translate)
                                                         ? 'ДВУХГОЛ.'
-                                                        : (players[key].translate.toUpperCase().indexOf('ОРИГИНАЛ')+1)
+                                                        : /ОРИГИНАЛ/i.test(players[key].translate)
                                                             ? 'ОРИГИНАЛ'
-                                                            : players[key].translate.toUpperCase()
+                                                            : /(ENG|ORIG|СУБТ)/i.test(players[key].translate)
+                                                                ? options.language && /en/i.test(options.language)
+                                                                    ? 'ENGLISH'
+                                                                    : 'СУБТИТИРЫ'
+                                                                : players[key].translate.toUpperCase()
                             : '';
                         j++;
                         btns[key] = btns[key]
