@@ -93,7 +93,7 @@ function yo(sel) {
     options.player = ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,kodik,iframe,videocdn,trailer,torrent'
+            ? 'moonwalk,hdgo,kodik,iframe,videocdn,collaps'
             : options.player;
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
