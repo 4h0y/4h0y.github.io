@@ -93,7 +93,7 @@ function yo(sel) {
     options.player = ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t)
         ? 'trailer'
         : (!options.player)
-            ? 'moonwalk,hdgo,kodik,iframe,videocdn,collaps'
+            ? 'videocdn,collaps,iframe,hdvb,kodik'
             : options.player;
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
@@ -107,7 +107,7 @@ function yo(sel) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'moonwalk: {Q} {T}, hdgo: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}, videocdn: {Q} {T}';
+        : 'videocdn: {Q} {T}, hdvb: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
@@ -453,10 +453,10 @@ function tryParseJSON(jsonString) {
 }
 
 function fullscreen() {
-    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-        (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-        (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-        (document.msFullscreenElement && document.msFullscreenElement !== null);
+    var isInFullScreen = (document.fullscreenElement) ||
+        (document.webkitFullscreenElement) ||
+        (document.mozFullScreenElement) ||
+        (document.msFullscreenElement);
 
     var iframe = document.querySelector('#yohoho-iframe');
     if (!isInFullScreen) {
