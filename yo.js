@@ -224,7 +224,7 @@ function yo(sel) {
     i.setAttribute('height', h);
     yohoho.setAttribute('style', style);
 
-    httpGetAsync('https://ahoy.yohoho.cc', p,
+    httpGetAsync('https://ahoy.yohoho.online', p,
         function (players) {
             var first = true;
             var buttons = document.createElement('div');
