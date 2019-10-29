@@ -49,7 +49,7 @@ function ahoy_yo() {
         for (var i in a) {
             if (a.hasOwnProperty(i) && a[i]) {
                 a[i].addEventListener('click', function() {
-                    yo(this.getAttribute('data-ahoy'));
+                    yo(this);
                 });
             }
         }
@@ -59,10 +59,14 @@ function ahoy_yo() {
     }
 }
 
-function yo(sel) {
+function yo(self) {
     var h, a, w, i, l, y, s, t = false, p = '';
 
-    y = document.querySelector('#' + ((sel) ? sel : 'yohoho'));
+    var sel = self && self.getAttribute('data-ahoy')
+        ? self.getAttribute('data-ahoy')
+        : 'yohoho';
+
+    y = document.querySelector('#' + sel);
     if (!y) {
         y = document.querySelector('#yohoho-online');
         if (!y) {
@@ -85,6 +89,14 @@ function yo(sel) {
     var options = [].slice.call(yohoho.attributes).reduce(function (o, a) {
         return /^data-/.test(a.name) && (o[a.name.substr(5)] = decodeURIComponent(a.value)), o;
     }, {});
+
+    if (self && self.attributes) {
+        [].slice.call(self.attributes).reduce(function (o, a) {
+            if (/^data-/.test(a.name)) {
+                options[a.name.substr(5)] = decodeURIComponent(a.value)
+            }
+        }, {});
+    }
 
     if ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t) {
         options.player = 'trailer';
