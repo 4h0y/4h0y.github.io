@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', ahoy_yo);
+window.addEventListener('orientationchange', resize, false);
+window.addEventListener('resize', resize, false);
 
 function ahoy_key(event) {
     if (!event || (!event.key && !event.keyCode)) return;
@@ -205,15 +207,15 @@ function yo(self) {
     if (parseInt(yohoho.offsetWidth)) {
         w = parseInt(yohoho.offsetWidth);
     }
-    else if (parseInt(yohoho.parentNode.offsetWidth)) {
-        w = (yohoho.parentNode.offsetWidth);
+    else if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetWidth)) {
+        w = parseInt(yohoho.parentNode.offsetWidth);
     }
     else {
         w = 610;
     }
 
     if (parseInt(yohoho.offsetHeight) && parseInt(yohoho.offsetHeight) < 370) {
-        if (parseInt(yohoho.parentNode.offsetHeight) && parseInt(yohoho.parentNode.offsetHeight) >= 370) {
+        if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetHeight) && parseInt(yohoho.parentNode.offsetHeight) >= 370) {
             h = parseInt(yohoho.parentNode.offsetHeight);
         }
         else {
@@ -223,7 +225,7 @@ function yo(self) {
     else if (parseInt(yohoho.offsetHeight) && w/3 < parseInt(yohoho.offsetHeight)) {
         h = parseInt(yohoho.offsetHeight);
     }
-    else if (parseInt(yohoho.parentNode.offsetHeight) && w/3 < parseInt(yohoho.parentNode.offsetHeight)) {
+    else if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetHeight) && w/3 < parseInt(yohoho.parentNode.offsetHeight)) {
         h = parseInt(yohoho.parentNode.offsetHeight);
     }
     else {
@@ -492,4 +494,13 @@ function fullscreen() {
             document.msExitFullscreen();
         }
     }
+}
+
+function resize() {
+    var yi = document.querySelector('#yohoho-iframe');
+    if (!yi || !yi.parentNode || !yi.parentNode.parentNode || !yi.parentNode.parentNode.offsetWidth) return;
+    var w = parseInt(yi.parentNode.parentNode.offsetWidth);
+    yi.style.width = w + 'px';
+    yi.setAttribute('width', w.toString());
+    yi.parentNode.style.width = w + 'px';
 }
