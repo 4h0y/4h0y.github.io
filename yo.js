@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', ahoy_yo);
-window.addEventListener('orientationchange', resize, false);
-window.addEventListener('resize', resize, false);
 
 function ahoy_key(event) {
     if (!event || (!event.key && !event.keyCode)) return;
@@ -157,6 +155,11 @@ function yo(self) {
 
     if (options.tv) {
         document.addEventListener('keydown', ahoy_key);
+    }
+
+    if (options.resize) {
+        window.addEventListener('orientationchange', resize, false);
+        window.addEventListener('resize', resize, false);
     }
 
     var yohoho_loading = document.querySelector('#yohoho-loading');
