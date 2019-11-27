@@ -175,6 +175,7 @@
                             return;
                         }
                         window.location.hash = '#' + yohoho.dataset.kinopoisk;
+                        document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
                     }
                 } else if (/^\d+$/.test(title.value)) {
                     yohoho.dataset.kinopoisk = title.value;
@@ -183,6 +184,7 @@
                         return;
                     }
                     window.location.hash = '#' + yohoho.dataset.kinopoisk;
+                    document.title = 'КиноПоиск: ' + yohoho.dataset.kinopoisk;
                 } else {
                     yohoho.dataset.title = title.value;
                     if (window.location.hostname === 'yohoho.cc') {
@@ -190,6 +192,7 @@
                         return;
                     }
                     window.location.hash = '#' + yohoho.dataset.title;
+                    document.title = yohoho.dataset.title;
                 }
                 items = [];
                 return yo();
