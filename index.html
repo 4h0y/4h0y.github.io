@@ -192,7 +192,7 @@
                         return;
                     }
                     window.location.hash = '#' + yohoho.dataset.title;
-                    document.title = yohoho.dataset.title;
+                    document.title = decodeURIComponent(yohoho.dataset.title);
                 }
                 items = [];
                 return yo();
