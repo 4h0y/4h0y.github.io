@@ -171,7 +171,7 @@
                     if (exec && exec[2]) {
                         yohoho.dataset.kinopoisk = exec[2];
                         if (window.location.hostname === 'yohoho.cc') {
-                            window.location.href = 'https://4h0y.bitbucket.io/#' + yohoho.dataset.kinopoisk;
+                            window.location.href = 'https://4h0y.gitlab.io/#' + yohoho.dataset.kinopoisk;
                             return;
                         }
                         window.location.hash = '#' + yohoho.dataset.kinopoisk;
@@ -179,17 +179,17 @@
                 } else if (/^\d+$/.test(title.value)) {
                     yohoho.dataset.kinopoisk = title.value;
                     if (window.location.hostname === 'yohoho.cc') {
-                        window.location.href = 'https://4h0y.bitbucket.io/#' + title.value;
+                        window.location.href = 'https://4h0y.gitlab.io/#' + yohoho.dataset.kinopoisk;
                         return;
                     }
-                    window.location.hash = '#' + title.value;
+                    window.location.hash = '#' + yohoho.dataset.kinopoisk;
                 } else {
                     yohoho.dataset.title = title.value;
                     if (window.location.hostname === 'yohoho.cc') {
-                        window.location.href = 'https://4h0y.bitbucket.io/#' + title.value;
+                        window.location.href = 'https://4h0y.bitbucket.io/#' + yohoho.dataset.title;
                         return;
                     }
-                    window.location.hash = '#' + title.value;
+                    window.location.hash = '#' + yohoho.dataset.title;
                 }
                 items = [];
                 return yo();
