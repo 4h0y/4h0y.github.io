@@ -452,6 +452,9 @@ function httpGetAsync(url, body, callback) {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             callback(tryParseJSON(xmlHttp.responseText), xmlHttp.responseText);
         }
+        else {
+            callback({}, '');
+        }
     };
     xmlHttp.open('POST', url, true);
     xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
