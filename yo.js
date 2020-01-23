@@ -104,9 +104,9 @@ function yo(self) {
 
     options.player = ((options.title && /трейлер|trailer|teaser/i.test(options.title)) || t)
         ? 'trailer'
-        : (!options.player)
-            ? 'videocdn,collaps,iframe,hdvb,kodik'
-            : options.player;
+        : options.player
+            ? options.player
+            : '';
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
@@ -119,7 +119,7 @@ function yo(self) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'videocdn: {Q} {T}, hdvb: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
+        : 'videocdn: {Q} {T}, hdvb: {Q} {T}, bazon: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
