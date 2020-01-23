@@ -106,7 +106,7 @@ function yo(self) {
         ? 'trailer'
         : options.player
             ? options.player
-            : '';
+            : 'videocdn,collaps,iframe,hdvb,bazon,kodik';
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
