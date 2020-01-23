@@ -415,6 +415,8 @@ function showPlayer(iframe, quality, translate, element, buttons, size) {
         yohohoButtons.style = yohohoButtons.style ? yohohoButtons.style : {};
         if (yohohoButtons.style && typeof yohohoButtons.style === 'object') {
             yohohoButtons.style.right = '0';
+        } else {
+            yohohoButtons.style = {right: '0'};
         }
         setTimeout(function () {
             var btn = setInterval(function () {
