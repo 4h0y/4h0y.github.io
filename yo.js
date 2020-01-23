@@ -420,7 +420,7 @@ function showPlayer(iframe, quality, translate, element, buttons, size) {
         }
         setTimeout(function () {
             var btn = setInterval(function () {
-                if (parseInt(yohohoButtons.style.right) > -parseInt(yohohoButtons.offsetWidth)+(30*size))  {
+                if (parseInt(yohohoButtons.style.right || '0') > -parseInt(yohohoButtons.offsetWidth)+(30*size))  {
                     yohohoButtons.style.right = (parseInt(yohohoButtons.style.right)-1) + 'px';
                 }
                 else {
