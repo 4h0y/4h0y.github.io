@@ -199,7 +199,11 @@ function yo(self) {
         w = 610;
     }
 
-    if (parseInt(yohoho.offsetHeight) && parseInt(yohoho.offsetHeight) < 370) {
+    if (yohoho.parentNode && yohoho.parentNode.tagName && yohoho.parentNode.tagName.toLowerCase() === 'body') {
+        h = Math.max(document.body.scrollHeight, document.body.offsetHeight,
+            document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+    }
+    else if (parseInt(yohoho.offsetHeight) && parseInt(yohoho.offsetHeight) < 370) {
         if (yohoho.parentNode && parseInt(yohoho.parentNode.offsetHeight) && parseInt(yohoho.parentNode.offsetHeight) >= 370) {
             h = parseInt(yohoho.parentNode.offsetHeight);
         }
