@@ -88,7 +88,7 @@ function yo(self) {
         ? 'trailer'
         : options.player
             ? options.player
-            : 'videocdn,collaps,iframe,hdvb,bazon,kodik';
+            : 'videocdn,collaps,hdvb,bazon,ustore,alloha,iframe,kodik';
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
@@ -101,7 +101,7 @@ function yo(self) {
     var btns = {};
     options.button = (options.button)
         ? options.button
-        : 'videocdn: {Q} {T}, hdvb: {Q} {T}, bazon: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}';
+        : 'videocdn: {Q} {T}, hdvb: {Q} {T}, bazon: {Q} {T}, ustore: {Q} {T}, alloha: {Q} {T}, kodik: {Q} {T}, iframe: {Q} {T}, collaps: {Q} {T}';
     if (options.button) {
         options.button.split(',').forEach(function (button) {
             var btn = button.split(':');
