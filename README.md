@@ -1,4 +1,4 @@
-![Yohoho.cc](https://raw.githubusercontent.com/4h0y/4h0y.github.io/master/icons/banner.png)
+![Yohoho.cc](https://raw.githubusercontent.com/4h0y/4h0y.github.io/master/icons/yo.min.png)
 
 ## Как поставить на сайт все плееры онлайн фильмов и торренты рунета?
 В шаблон сайта вставляете в место, где должен быть плеер, подробнее в разделе «[Вебмастеру](http://yohoho.cc/webmaster.html)».
