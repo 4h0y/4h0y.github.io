@@ -41,7 +41,7 @@ function yo_ahoy_key(event) {
     }
 }
 
-function yo_ahoy_el(self) {
+function yo(self) {
     var h, a, w, i, l, y, s, t = false, p = '';
 
     var sel = self && self.getAttribute('data-ahoy')
@@ -492,12 +492,12 @@ function yo_resize() {
         for (var i in a) {
             if (a.hasOwnProperty(i) && a[i]) {
                 a[i].addEventListener('click', function() {
-                    yo_ahoy_el(this);
+                    yo(this);
                 });
             }
         }
     }
     else {
-        yo_ahoy_el();
+        yo();
     }
 })();
