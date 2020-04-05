@@ -227,7 +227,7 @@ function yo(self) {
     i.setAttribute('height', h);
     yohoho.setAttribute('style', style);
 
-    yo_get('https://ahoy.yohoho.online', p,
+    yo_get('https://ahoy.yohoho.online?cache' + Math.random().toString().substr(2, 3), p,
         function (players) {
             var first = true;
             var buttons = document.createElement('div');
