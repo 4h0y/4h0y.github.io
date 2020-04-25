@@ -88,7 +88,7 @@ function yo(self) {
         ? 'trailer'
         : options.player
             ? options.player
-            : 'videocdn,collaps,hdvb,bazon,ustore,alloha,iframe,kodik';
+            : 'videocdn,collaps,hdvb,bazon,ustore,alloha,iframe,kodik,pleer';
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
@@ -240,7 +240,20 @@ function yo(self) {
                     if (!re || !re[1] || !re[1].trim()) continue;
                     p.push(re[1].trim());
                 }
-                keys = p.length ? p : Object.keys(players);
+                if (p.length) {
+                    keys = p;
+                } else {
+                    var yo_res = Object.keys(players);
+                    var yo_new = [];
+                    for (var ps = 0; ps < keys.length; ps++) {
+                        for (var pp = 0; pp < yo_res.length; pp++) {
+                            if (keys[ps].toLowerCase().indexOf(yo_res[pp].toLowerCase())+1) {
+                                yo_new.push(yo_res[pp]);
+                            }
+                        }
+                    }
+                    keys = yo_new;
+                }
             }
             var j = 0;
             for (var i = 0, len = keys.length; i < len; i++) {
