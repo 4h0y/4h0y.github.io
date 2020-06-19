@@ -44,6 +44,10 @@ function yo_ahoy_key(event) {
 function yo(self) {
     var h, a, w, i, l, y, s, t = false, p = '';
 
+    var date1 = new Date();
+    var date2 = new Date('2021-10-21');
+    var tld = date1 > date2 ? 'cc' : 'online';
+
     var sel = self && self.getAttribute('data-ahoy')
         ? self.getAttribute('data-ahoy')
         : 'yohoho';
@@ -88,7 +92,7 @@ function yo(self) {
         ? 'trailer'
         : options.player
             ? options.player
-            : 'videocdn,collaps,hdvb,bazon,ustore,alloha,iframe,kodik,pleer';
+            : 'collaps,hdvb,bazon,ustore,alloha,videocdn,iframe,kodik,pleer';
 
     var bg = (options.bg && options.bg.replace(/[^0-9a-z]/ig, ''))
         ? options.bg.replace(/[^0-9a-z]/ig, '')
@@ -227,7 +231,7 @@ function yo(self) {
     i.setAttribute('height', h);
     yohoho.setAttribute('style', style);
 
-    yo_get('https://ahoy.yohoho.online?cache' + Math.random().toString().substr(2, 3), p,
+    yo_get('https://ahoy.yohoho.' + tld + '?cache' + Math.random().toString().substr(2, 3), p,
         function (players) {
             var first = true;
             var buttons = document.createElement('div');
