@@ -350,14 +350,14 @@ function yo(self) {
                     buttons.appendChild(option);
                     if (j && !(j % options.button_limit) && keys[i+1]) {
                         var next = document.createElement('div');
-                        next.setAttribute('onclick', 'yo_page(' + Math.ceil((j+1)/options.button_limit) + ');' + 'yo_player("' + encodeURIComponent(players[keys[i+1].toLowerCase().trim()].iframe) + '", "' + players[keys[i+1].toLowerCase().trim()].quality + '", "' + players[keys[i+1].toLowerCase().trim()].translate + '", document.querySelector(\'[data-event="' + (j+1) + '"]\'), "' + options.button_size + '")');
+                        next.setAttribute('onclick', 'yo_page(' + Math.ceil((j+1)/options.button_limit) + ', "' + options.button_size + '");' + 'yo_player("' + encodeURIComponent(players[keys[i+1].toLowerCase().trim()].iframe) + '", "' + players[keys[i+1].toLowerCase().trim()].quality + '", "' + players[keys[i+1].toLowerCase().trim()].translate + '", document.querySelector(\'[data-event="' + (j+1) + '"]\'), "' + options.button_size + '")');
                         next.dataset.event = 'next';
                         next.dataset.page = Math.ceil(j/options.button_limit) + '';
                         next.innerText = '-► ' + language.next;
                         buttons.appendChild(next);
 
                         var prev = document.createElement('div');
-                        prev.setAttribute('onclick', 'yo_page(' + Math.ceil(j/options.button_limit) + ');' + 'yo_player("' + encodeURIComponent(players[keys[i-1].toLowerCase().trim()].iframe) + '", "' + players[keys[i-1].toLowerCase().trim()].quality + '", "' + players[keys[i-1].toLowerCase().trim()].translate + '", document.querySelector(\'[data-event="' + (j) + '"]\'), "' + options.button_size + '")');
+                        prev.setAttribute('onclick', 'yo_page(' + Math.ceil(j/options.button_limit) + ', "' + options.button_size + '");' + 'yo_player("' + encodeURIComponent(players[keys[i-1].toLowerCase().trim()].iframe) + '", "' + players[keys[i-1].toLowerCase().trim()].quality + '", "' + players[keys[i-1].toLowerCase().trim()].translate + '", document.querySelector(\'[data-event="' + (j) + '"]\'), "' + options.button_size + '")');
                         prev.dataset.event = 'prev';
                         prev.dataset.page = Math.ceil((j+1)/options.button_limit) + '';
                         prev.innerText = '◄- ' + language.prev;
@@ -372,7 +372,7 @@ function yo(self) {
             else if (j > 1) {
                 yohoho.appendChild(buttons);
                 if (keys.length > options.button_limit) {
-                    yo_page(1);
+                    yo_page(1, options.button_size);
                 }
             }
         });
@@ -427,7 +427,7 @@ function yo_player(iframe, quality, translate, element, buttons, size) {
     }
 }
 
-function yo_page(page) {
+function yo_page(page, size) {
     var yohohoPages = document.querySelectorAll('div[data-page]');
     if (yohohoPages) {
         for (var i = 0; i < yohohoPages.length; i++) {
@@ -441,8 +441,19 @@ function yo_page(page) {
         }
     }
     var yohohoButtons = document.querySelector('#yohoho-buttons');
+    size = size ? parseFloat(size) : 1;
     if (yohohoButtons) {
-        yohohoButtons.style.right = 0;
+        yohohoButtons.style.right = '0';
+        setTimeout(function () {
+            var btn = setInterval(function () {
+                if (parseInt(yohohoButtons.style && yohohoButtons.style.right || '0') > -parseInt(yohohoButtons.offsetWidth)+(30*size))  {
+                    yohohoButtons.style.right = (parseInt(yohohoButtons.style.right)-1) + 'px';
+                }
+                else {
+                    clearInterval(btn);
+                }
+            }, 5);
+        }, 5000);
     }
 }
 
