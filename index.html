@@ -96,29 +96,70 @@
     });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var seo = document.querySelector('.index-seo').innerText;
-        var items = seo.split(' ');
+    var UPDATE_TIME = 100;
 
-        (function flashWord() {
-            var i = 0;
-            function run(item) {
-                var t = setTimeout(function () {
-                    clearTimeout(t);
-                    document.querySelector('.index-seo').innerHTML = seo.replace(new RegExp(' ' + item + ' ', 'g'), ' <span style="color: #fff">' + item + '</span> ');
-                    if (items.length) {
-                        i = getRandom(0, items.length - 1);
-                        run(items[i].replace(/[^A-Za-zА-Яа-яёЁ0-9]/gim, ''));
-                    }
-                }, 100);
+    function getRandom(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function run(prevNodes, map) {
+        var t = setTimeout(function() {
+            clearTimeout(t);
+            var nodes = map[getRandom(0, Math.floor(map.length / 2))]
+            prevNodes.forEach(node => {
+                node.style.color = 'inherit';
+            });
+
+            nodes.forEach(node => {
+                node.style.color = '#fff';
+            });
+
+            run(nodes, map);
+        }, UPDATE_TIME);
+    }
+
+    function flashWord() {
+        var seoElement = document.querySelector('.index-seo');
+        var seoText = seoElement.innerText;
+        var items = seoText.split(' ');
+
+        function getRandom(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        var uniqItems = items.reduce((uniq, item) => {
+            if (!uniq.item) {
+                uniq[item] = `_${Math.random().toString().slice(2, 10)}`
             }
-            function getRandom(min, max) {
-                min = Math.ceil(min);
-                max = Math.floor(max);
-                return Math.floor(Math.random() * (max - min + 1)) + min;
+            return uniq;
+        }, {});
+
+        seoElement.innerHTML =  Object.entries(uniqItems).reduce((total, [word, className]) => {
+            var cleanWord = word.replace(new RegExp(`[^A-Za-zА-Яа-яёЁ0-9]`, 'gim'));
+            if (word !== cleanWord) {
+                return total;
             }
-            run(items[i]);
-        })();
+
+            return total.replace(new RegExp(` ${cleanWord} `, 'g'), ` <span class="${className}">${cleanWord}</span> `);;
+        }, seoText);
+
+        var nodesMap = Object.values(uniqItems)
+            .map(className =>
+                Array.from(document.querySelectorAll(`.${className}`)),
+            {})
+            .filter(nodes => nodes.length)
+            .sort((a, b) => b.length - a.length);
+
+        run([], nodesMap);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        flashWord();
 
         (function countMovies() {
             var date = new Date();
