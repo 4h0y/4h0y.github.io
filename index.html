@@ -125,33 +125,25 @@
         var seoText = seoElement.innerText;
         var items = seoText.split(' ');
 
-        function getRandom(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
         var uniqItems = items.reduce((uniq, item) => {
-            if (!uniq.item) {
+            if (!uniq[item]) {
                 uniq[item] = `_${Math.random().toString().slice(2, 10)}`
             }
             return uniq;
         }, {});
 
         seoElement.innerHTML =  Object.entries(uniqItems).reduce((total, [word, className]) => {
-            var cleanWord = word.replace(new RegExp(`[^A-Za-zА-Яа-яёЁ0-9]`, 'gim'));
+            var cleanWord = word.replace(/[^A-Za-zА-Яа-яёЁ0-9]/gim);
             if (word !== cleanWord) {
                 return total;
             }
 
-            return total.replace(new RegExp(` ${cleanWord} `, 'g'), ` <span class="${className}">${cleanWord}</span> `);;
+            return total.replace(new RegExp(` ${cleanWord} `, 'g'),
+                ` <span class="${className}">${cleanWord}</span> `);
         }, seoText);
 
         var nodesMap = Object.values(uniqItems)
-            .map(className =>
-                Array.from(document.querySelectorAll(`.${className}`)),
-            {})
+            .map(className => Array.from(document.querySelectorAll(`.${className}`)), {})
             .filter(nodes => nodes.length)
             .sort((a, b) => b.length - a.length);
 
