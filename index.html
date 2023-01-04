@@ -40,9 +40,6 @@
                     <a href="https://github.com/4h0y/4h0y.github.io" target="_blank">GitHub</a>
                 </li>
                 <li>
-                    <a href="https://bitbucket.org/4h0y/4h0y.bitbucket.io" target="_blank">Bitbucket</a>
-                </li>
-                <li>
                     <a href="https://gitlab.com/4h0y/4h0y.gitlab.io" target="_blank">GitLab</a>
                 </li>
             </ul>
@@ -129,10 +126,10 @@
             var minutes = date.getUTCMinutes();
             var seconds = date.getUTCSeconds();
             var total = ((year - 2014) * 121680) + (month * 10140) + (day * 338) + (hours * 14) + minutes + seconds;
-            document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})/, '$1 $2');
+            document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})([0-9]{1})/, '$1 $2 $3');
             setInterval(function () {
                 total += Math.floor(Math.random() * 3);
-                document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})/, '$1 $2');
+                document.querySelector('#count').innerHTML = (total + '').replace(/([0-9]{3})([0-9]{3})([0-9]{1})/, '$1 $2 $3');
             }, 1000);
         })();
 
@@ -187,7 +184,7 @@
                 } else {
                     yohoho.dataset.title = encodeURIComponent(title.value);
                     if (window.location.hostname === 'yohoho.cc') {
-                        window.location.href = 'https://4h0y.bitbucket.io/#' + yohoho.dataset.title;
+                        window.location.href = 'https://4h0y.gitlab.io/#' + yohoho.dataset.title;
                         return;
                     }
                     window.location.hash = '#' + yohoho.dataset.title;
