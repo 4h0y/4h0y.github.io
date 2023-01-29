@@ -60,38 +60,9 @@
 <div class="search-line">
     <div id="yohoho" data-tv="1" data-resize="1">
         <div class="brand">Yohoho</div>
-        <div id="donate-hide" class="form">
+        <div class="form">
             <input type="text" placeholder="Название фильма / ID КиноПоиск" id="search-title" name="title" style="width: 250px">
             <input type="button" id="search" value="Найти">
-        </div>
-        <style>
-#donate {
-    display: none;
-    margin: 20px auto;
-    width: 100%;
-    text-align: center;
-    background: #2a3440;
-    border-radius: 10px;
-    padding: 15px;
-    border: 3px #27313e solid;
-}
-.donat-btn {
-    background: #27313e;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 5px;
-    color: #80ffa6;
-    cursor: pointer;
-}
-.donat-btn:hover {
-    background: #2f3c4d;
-}
-        </style>
-        <div id="donate">
-            <div style="margin: 0 0 15px 0;">Просмотр доступен после доната любой суммы:</div>
-            <a href="https://u24.gov.ua" target="_blank" id="btn1" class="donat-btn">0.01 $</a>
-            <a href="https://savelife.in.ua/en/donate-en/#donate-army-card-monthly" target="_blank" id="btn2" class="donat-btn">0.02 ₸</a>
-            <a href="https://prytulafoundation.org/en/home/support_page" target="_blank" id="btn3" class="donat-btn">0.03 ₽</a>
         </div>
     </div>
 </div>
@@ -162,29 +133,6 @@
             }, 1000);
         })();
 
-        var donate = document.querySelector('#donate');
-        var donateHide = document.querySelector('#donate-hide');
-        
-        var btn1 = document.querySelector('#btn1');
-        var btn2 = document.querySelector('#btn2');
-        var btn3 = document.querySelector('#btn3');
-        
-        btn1.addEventListener('click', function () {
-            setTimeout(function() {
-                return parse();
-            },10000);
-        });
-        btn2.addEventListener('click', function () {
-            setTimeout(function() {
-                return parse();
-            },10000);
-        });
-        btn3.addEventListener('click', function () {
-            setTimeout(function() {
-                return parse();
-            },10000);
-        });
-        
         var search = document.querySelector('#search');
         var title = document.querySelector('#search-title');
 
@@ -192,17 +140,13 @@
             var hash = window.location.hash.substring(1);
             if (title && hash) {
                 title.value = decodeURIComponent(hash);
-                donate.style.display = "block";
-                donateHide.style.display = "none";
-                return;
+                return parse();
             }
         }
 
         if (search) {
             search.addEventListener('click', function () {
-                donate.style.display = "block";
-                donateHide.style.display = "none";
-                return;
+                return parse();
             });
         }
 
@@ -210,9 +154,7 @@
             title.addEventListener('keyup', function (event) {
                 event.preventDefault();
                 if (event.keyCode === 13) {
-                    donate.style.display = "block";
-                    donateHide.style.display = "none";
-                    return;
+                    return parse();
                 }
             });
         }
